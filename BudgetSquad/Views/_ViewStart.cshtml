@@ -1,0 +1,14 @@
+﻿@{
+    if (HttpContext.Current.User.IsInRole("Planner"))
+    {
+        Layout = "~/Views/Shared/_PlannerLayout.cshtml";
+    }
+    else if (HttpContext.Current.User.IsInRole("Party Member"))
+    {
+        Layout = "~/Views/Shared/_PartyMemberLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
