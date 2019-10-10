@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,7 +17,7 @@ namespace BudgetSquad.Models
         // GET: CreateEvents
         public ActionResult Index()
         {
-            var createEvents = db.CreateEvents.Include(c => c.Planner);
+            var createEvents = db.CreateEvents.Where(c => c.EventsName != null).ToList();
             return View(createEvents.ToList());
         }
 
@@ -38,7 +39,8 @@ namespace BudgetSquad.Models
         // GET: CreateEvents/Create
         public ActionResult Create()
         {
-            ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName");
+            CreateEvent createEvent = new CreateEvent();
+            //ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName");
             return View();
         }
 
@@ -47,18 +49,29 @@ namespace BudgetSquad.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EventsName,City,State,DateOfEvent,NumberOfMembers,TheBudgetOfEvent,PlannerId")] CreateEvent createEvent)
+        public ActionResult Create([Bind(Include = "Id,EventsName,City,State,DateOfEvent,NumberOfMembers,TheBudgetOfEvent,Planner,ApplicationUserId")] CreateEvent createEvent)
         {
             if (ModelState.IsValid)
             {
+                var currentPlannerId = User.Identity.GetUserId();
+                Planner planner = new Planner();
+                planner.ApplicationUserId = currentPlannerId;                
                 db.CreateEvents.Add(createEvent);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName", createEvent.PlannerId);
+            //ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName", createEvent.PlannerId);
             return View(createEvent);
         }
+
+        public ActionResult MadeActivites()
+        {
+            return View();
+
+        }
+
+
 
         // GET: CreateEvents/Edit/5
         public ActionResult Edit(int? id)
@@ -72,7 +85,7 @@ namespace BudgetSquad.Models
             {
                 return HttpNotFound();
             }
-            ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName", createEvent.PlannerId);
+            //ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName", createEvent.PlannerId);
             return View(createEvent);
         }
 
@@ -81,7 +94,7 @@ namespace BudgetSquad.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EventsName,City,State,DateOfEvent,NumberOfMembers,TheBudgetOfEvent,PlannerId")] CreateEvent createEvent)
+        public ActionResult Edit([Bind(Include = "Id,EventsName,City,State,DateOfEvent,NumberOfMembers,TheBudgetOfEvent,Planner,ApplicationUserId")] CreateEvent createEvent)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +102,7 @@ namespace BudgetSquad.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName", createEvent.PlannerId);
+            //ViewBag.PlannerId = new SelectList(db.Planners, "Id", "FirstName", createEvent.PlannerId);
             return View(createEvent);
         }
 

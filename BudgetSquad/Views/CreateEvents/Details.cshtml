@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Planner.FirstName)
+            @Html.DisplayNameFor(model => model.NameOfPlanner)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Planner.FirstName)
+            @Html.DisplayFor(model => model.NameOfPlanner)
         </dd>
 
         <dt>
@@ -71,4 +71,5 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("See Activites", "Index", "MadeActivites") |
 </p>

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BudgetSquad.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BudgetSquad.Models;
 
 namespace BudgetSquad.Controllers
 {
@@ -17,7 +14,7 @@ namespace BudgetSquad.Controllers
         // GET: MadeActivites
         public ActionResult Index()
         {
-            var madeActivites = db.MadeActivites.Include(m => m.Event);
+            var madeActivites = db.MadeActivites.Where(m => m.EventsName !=null).ToList();
             return View(madeActivites.ToList());
         }
 
@@ -36,10 +33,12 @@ namespace BudgetSquad.Controllers
             return View(madeActivites);
         }
 
+        
         // GET: MadeActivites/Create
         public ActionResult Create()
         {
-            ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName");
+            MadeActivites madeActivites = new MadeActivites();
+            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName");
             return View();
         }
 
@@ -48,7 +47,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,EventId")] MadeActivites madeActivites)
+        public ActionResult Create([Bind(Include = "Id,EventsName,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,ApplicationUserId")] MadeActivites madeActivites)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +56,7 @@ namespace BudgetSquad.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
+            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
             return View(madeActivites);
         }
 
@@ -73,7 +72,7 @@ namespace BudgetSquad.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
+            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
             return View(madeActivites);
         }
 
@@ -82,7 +81,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,EventId")] MadeActivites madeActivites)
+        public ActionResult Edit([Bind(Include = "Id,ventsName,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,ApplicationUserId")] MadeActivites madeActivites)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +89,7 @@ namespace BudgetSquad.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
+            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
             return View(madeActivites);
         }
 

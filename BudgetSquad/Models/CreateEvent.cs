@@ -11,8 +11,14 @@ namespace BudgetSquad.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         [Display(Name = "What is the Name of the Event you are creating?")]
         public string EventsName { get; set; }
+        
+        [Display(Name ="Who created this Event?")]
+        public string NameOfPlanner { get; set; }
+
+
         [Display(Name = "What city do you want to host this Event?")]
         public string City { get; set; }
         [Display(Name = "State")]
@@ -25,10 +31,10 @@ namespace BudgetSquad.Models
 
         public string TheBudgetOfEvent { get; set; }
 
-        [ForeignKey("Planner")]
-
-        public int PlannerId { get; set; }
-        public Planner Planner { get; set; }
+        [ForeignKey("ApplicationUser")]
+        [Display(Name = "UserID")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
 
         [NotMapped]

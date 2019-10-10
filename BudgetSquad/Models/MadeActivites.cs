@@ -11,6 +11,10 @@ namespace BudgetSquad.Models
     {
         [Key]
         public int Id { get; set; }
+        
+        [Required]
+        [Display(Name = "What is the Name of the Event that is Activity is for?")]
+        public  string EventsName { get; set; }
         [Display(Name = "Whats the Name of Activity?")]
         public string NameOfActivity { get; set; }
         [Display(Name = "What is the Address of this Activity?")]
@@ -29,9 +33,9 @@ namespace BudgetSquad.Models
         [Display(Name = "How much do you think this Activity is going to cost?")]
         public double EstimatedCostOfActivity { get; set; }
 
-        [ForeignKey("Event")]
-
-        public int EventId { get; set; }
-        public CreateEvent Event { get; set; }
+        [ForeignKey("ApplicationUser")]
+        [Display(Name = "UserID")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

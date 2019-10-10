@@ -178,21 +178,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910081539192_initial.cs" />
-    <Compile Include="Migrations\201910081539192_initial.Designer.cs">
-      <DependentUpon>201910081539192_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910091943048_initial.cs" />
+    <Compile Include="Migrations\201910091943048_initial.Designer.cs">
+      <DependentUpon>201910091943048_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910081545295_DbSet.cs" />
-    <Compile Include="Migrations\201910081545295_DbSet.Designer.cs">
-      <DependentUpon>201910081545295_DbSet.cs</DependentUpon>
+    <Compile Include="Migrations\201910092021474_update.cs" />
+    <Compile Include="Migrations\201910092021474_update.Designer.cs">
+      <DependentUpon>201910092021474_update.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910081550252_DbSet2.cs" />
-    <Compile Include="Migrations\201910081550252_DbSet2.Designer.cs">
-      <DependentUpon>201910081550252_DbSet2.cs</DependentUpon>
+    <Compile Include="Migrations\201910092115138_betterkey.cs" />
+    <Compile Include="Migrations\201910092115138_betterkey.Designer.cs">
+      <DependentUpon>201910092115138_betterkey.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910081736323_update.cs" />
-    <Compile Include="Migrations\201910081736323_update.Designer.cs">
-      <DependentUpon>201910081736323_update.cs</DependentUpon>
+    <Compile Include="Migrations\201910101800493_betterkeyforMadeActivitesClass.cs" />
+    <Compile Include="Migrations\201910101800493_betterkeyforMadeActivitesClass.Designer.cs">
+      <DependentUpon>201910101800493_betterkeyforMadeActivitesClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -284,6 +284,8 @@
     <Content Include="Views\MadeActivites\Details.cshtml" />
     <Content Include="Views\MadeActivites\Edit.cshtml" />
     <Content Include="Views\MadeActivites\Index.cshtml" />
+    <Content Include="Views\Shared\_PlannerLayout.cshtml" />
+    <Content Include="Views\Shared\_PartyMemberLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,17 +305,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910081539192_initial.resx">
-      <DependentUpon>201910081539192_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910091943048_initial.resx">
+      <DependentUpon>201910091943048_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910081545295_DbSet.resx">
-      <DependentUpon>201910081545295_DbSet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910092021474_update.resx">
+      <DependentUpon>201910092021474_update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910081550252_DbSet2.resx">
-      <DependentUpon>201910081550252_DbSet2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910092115138_betterkey.resx">
+      <DependentUpon>201910092115138_betterkey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910081736323_update.resx">
-      <DependentUpon>201910081736323_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910101800493_betterkeyforMadeActivitesClass.resx">
+      <DependentUpon>201910101800493_betterkeyforMadeActivitesClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

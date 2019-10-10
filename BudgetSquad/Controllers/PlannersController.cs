@@ -49,7 +49,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,Budget,ApplicationUserId")] Planner planner)
+        public ActionResult Create([Bind(Include = "Id,fullName,EmailAddress,Budget,ApplicationUserId")] Planner planner)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,Budget,ApplicationUserId")] Planner planner)
+        public ActionResult Edit([Bind(Include = "Id,FullName,EmailAddress,Budget,ApplicationUserId")] Planner planner)
         {
             if (ModelState.IsValid)
             {
