@@ -10,7 +10,7 @@ namespace BudgetSquad.Models
     public class MadeActivites
     {
         [Key]
-        public int Id { get; set; }
+        public int MadeActivitesId { get; set; }
         
         [Required]
         [Display(Name = "What is the Name of the Event that is Activity is for?")]

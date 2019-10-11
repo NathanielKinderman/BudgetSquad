@@ -41,5 +41,7 @@ namespace BudgetSquad.Models
         public System.Data.Entity.DbSet<BudgetSquad.Models.CreateEvent> CreateEvents { get; set; }
 
         public System.Data.Entity.DbSet<BudgetSquad.Models.MadeActivites> MadeActivites { get; set; }
+        public System.Data.Entity.DbSet<BudgetSquad.Models.ActivitesInfo> ActivitesInfos { get; set; }
+        //public System.Data.Entity.DbSet<BudgetSquad.Models.BarGraphData> Datas { get; set; }
     }
 }

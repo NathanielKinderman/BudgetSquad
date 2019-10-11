@@ -7,13 +7,13 @@ namespace BudgetSquad.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class betterkeyforMadeActivitesClass : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(betterkeyforMadeActivitesClass));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910101800493_betterkeyforMadeActivitesClass"; }
+            get { return "201910110055013_initial"; }
         }
         
         string IMigrationMetadata.Source

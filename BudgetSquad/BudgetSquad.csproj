@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarGraphController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MadeActivitesController.cs" />
@@ -178,27 +179,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910091943048_initial.cs" />
-    <Compile Include="Migrations\201910091943048_initial.Designer.cs">
-      <DependentUpon>201910091943048_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910092021474_update.cs" />
-    <Compile Include="Migrations\201910092021474_update.Designer.cs">
-      <DependentUpon>201910092021474_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910092115138_betterkey.cs" />
-    <Compile Include="Migrations\201910092115138_betterkey.Designer.cs">
-      <DependentUpon>201910092115138_betterkey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910101800493_betterkeyforMadeActivitesClass.cs" />
-    <Compile Include="Migrations\201910101800493_betterkeyforMadeActivitesClass.Designer.cs">
-      <DependentUpon>201910101800493_betterkeyforMadeActivitesClass.cs</DependentUpon>
+    <Compile Include="Migrations\201910110055013_initial.cs" />
+    <Compile Include="Migrations\201910110055013_initial.Designer.cs">
+      <DependentUpon>201910110055013_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ActivitesInfo.cs" />
     <Compile Include="Models\CreateEvent.cs" />
     <Compile Include="Controllers\CreateEventsController.cs" />
-    <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\BarGraphData.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocationInfo.cs" />
     <Compile Include="Models\MadeActivites.cs" />
@@ -286,6 +276,7 @@
     <Content Include="Views\MadeActivites\Index.cshtml" />
     <Content Include="Views\Shared\_PlannerLayout.cshtml" />
     <Content Include="Views\Shared\_PartyMemberLayout.cshtml" />
+    <Content Include="Views\BarGraph\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,17 +296,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910091943048_initial.resx">
-      <DependentUpon>201910091943048_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910092021474_update.resx">
-      <DependentUpon>201910092021474_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910092115138_betterkey.resx">
-      <DependentUpon>201910092115138_betterkey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910101800493_betterkeyforMadeActivitesClass.resx">
-      <DependentUpon>201910101800493_betterkeyforMadeActivitesClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910110055013_initial.resx">
+      <DependentUpon>201910110055013_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

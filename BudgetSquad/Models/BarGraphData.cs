@@ -8,15 +8,16 @@ using System.Web;
 
 namespace BudgetSquad.Models
 {
-    public class Data
+    public class BarGraphData
     {
         //DataContract for Serializing Data - required to serve in JSON format
-
+        
         [DataContract]
         public class DataPoint
         {
-            [Key]
-            public int Id { get; set; }
+            //[Key]
+            //public int DataPointId { get; set; }
+            
             public DataPoint(string x, double y)
             {
                 this.X = x;
@@ -31,9 +32,9 @@ namespace BudgetSquad.Models
             [DataMember(Name = "y")]
             public double? Y = null;
 
-            [ForeignKey("MadeActivites")]
-            public int MadeActivitesId { get; set; }
-            public MadeActivites MadeActivites { get; set; }
+            //[ForeignKey("ActivitesInfo")]
+            //public int InfoId { get; set; }
+            //public ActivitesInfo ActivitesInfo { get; set; }
         }
     }   
 }

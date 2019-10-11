@@ -60,6 +60,29 @@ namespace BudgetSquad.Controllers
             return View(madeActivites);
         }
 
+
+        public ActivitesInfo AddDataPoint(MadeActivites madeActivites)
+        {
+            ActivitesInfo activitesInfo = new ActivitesInfo();
+            activitesInfo.ActivityName = madeActivites.NameOfActivity;
+            activitesInfo.CostOfActivity = madeActivites.EstimatedCostOfActivity;
+            activitesInfo.InfoId = madeActivites.MadeActivitesId;
+            db.ActivitesInfos.Add(activitesInfo);          
+            db.SaveChanges();
+            return activitesInfo;
+
+        }
+
+        public ActionResult Data()
+        {
+            return View();
+
+        }
+
+
+
+
+
         // GET: MadeActivites/Edit/5
         public ActionResult Edit(int? id)
         {
