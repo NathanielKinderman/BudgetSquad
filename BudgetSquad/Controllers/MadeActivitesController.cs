@@ -1,4 +1,6 @@
-﻿using BudgetSquad.Models;
+﻿using BudgetingSquad.Models;
+using BudgetSquad.Models;
+using Newtonsoft.Json;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -80,6 +82,27 @@ namespace BudgetSquad.Controllers
         }
 
 
+
+        public string ConvertAddressToGoogleFormat(Address address)
+        {
+            string googleFormatAddress = address.StreetAddress + "," + address.City + "," + address.State + "," + address.ZipCode + "," + address.Country;
+            return googleFormatAddress;
+        }
+
+        public GeocodeInfo GeoLocate(string address)
+        {
+
+            var requestUrl = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key=AIzaSyCgxbc-4DbwDz3-fH-pSijZdrbh6JL-i4E";
+            var result = new WebClient().DownloadString(requestUrl);
+            GeocodeInfo geocodeInfo = JsonConvert.DeserializeObject<GeocodeInfo>(result);
+            return geocodeInfo;
+        }
+
+        public ActionResult Map()
+        {
+            return View();
+
+        }
 
 
 
