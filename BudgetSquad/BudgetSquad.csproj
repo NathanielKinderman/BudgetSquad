@@ -49,11 +49,14 @@
       <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="MailKit, Version=2.3.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
-      <HintPath>..\packages\MailKit.2.3.1.6\lib\net47\MailKit.dll</HintPath>
+      <HintPath>..\packages\MailKit.2.3.2\lib\net47\MailKit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="MimeKit, Version=2.3.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
-      <HintPath>..\packages\MimeKit.2.3.1\lib\net47\MimeKit.dll</HintPath>
+      <HintPath>..\packages\MimeKit.2.3.2\lib\net47\MimeKit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -197,6 +200,10 @@
     <Compile Include="Migrations\201910110252599_update.Designer.cs">
       <DependentUpon>201910110252599_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910161729166_emailClass.cs" />
+    <Compile Include="Migrations\201910161729166_emailClass.Designer.cs">
+      <DependentUpon>201910161729166_emailClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivitesInfo.cs" />
@@ -205,6 +212,8 @@
     <Compile Include="Models\CreateEvent.cs" />
     <Compile Include="Controllers\CreateEventsController.cs" />
     <Compile Include="Models\BarGraphData.cs" />
+    <Compile Include="Models\EmailAddress.cs" />
+    <Compile Include="Models\EmailMessage.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\GeocodeInfo.cs" />
     <Compile Include="Models\MadeActivites.cs" />
@@ -294,6 +303,7 @@
     <Content Include="Views\Shared\_PartyMemberLayout.cshtml" />
     <Content Include="Views\BarGraph\Index.cshtml" />
     <Content Include="Views\MadeActivites\Map.cshtml" />
+    <Content Include="Views\MadeActivites\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910110252599_update.resx">
       <DependentUpon>201910110252599_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161729166_emailClass.resx">
+      <DependentUpon>201910161729166_emailClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

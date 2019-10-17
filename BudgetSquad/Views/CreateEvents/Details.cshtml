@@ -72,4 +72,5 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index") |
     @Html.ActionLink("See Activites", "Index", "MadeActivites") |
+    @Html.ActionLink("Send Email", "sendEmail","CreateEvent", new { id = Model.ApplicationUserId})
 </p>

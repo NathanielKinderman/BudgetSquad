@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BudgetSquad.Models;
+using System.Net.Mail;
 
 namespace BudgetSquad.Controllers
 {
@@ -129,5 +130,38 @@ namespace BudgetSquad.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //[HttpPost]
+        //public void sendEmail(Email email)
+        //{
+        //    var currentContact = db.PartyMembers.Where(c => c.FirstName == email.FirstName && c.LastName == email.LastName).FirstOrDefault();
+        //    var fromAddress = new MailAddress("budgetsquadtestplanner", "Budget Squad Test Planner");
+        //    var toAddress = new MailAddress($"{currentContact.EmailAddress}", $"{currentContact.FirstName} {currentContact.LastName}");
+        //    string password = "Squad_1";
+        //    string subject = email.Subject;
+        //    string body = email.Message;
+
+        //    var smtp = new SmtpClient
+        //    {
+        //        Host = "smtp.gmail.com",
+        //        Port = 587,
+        //        EnableSsl = true,
+        //        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //        UseDefaultCredentials = false,
+        //        Credentials = new NetworkCredential("budgetsquadtestplanner", password)
+        //    };
+
+        //    using (var message = new MailMessage(fromAddress, toAddress))
+        //    {
+        //        string Subject = subject;
+        //        body = email.Message;
+        //    }
+        //    {
+        //        smtp.Send(fromAddress.Address, toAddress.Address, subject, body);
+        //    }
+
+
+
+        //}
     }
 }

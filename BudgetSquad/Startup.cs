@@ -1,6 +1,7 @@
 ﻿using BudgetSquad.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Owin;
 using Owin;
 
@@ -34,8 +35,8 @@ namespace BudgetSquad
                 role.Name = "Party Member";
                 roleManager.Create(role);
 
-            }
-
+            }            
         }
+        
     }
 }

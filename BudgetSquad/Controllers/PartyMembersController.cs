@@ -78,6 +78,11 @@ namespace BudgetSquad.Controllers
             //ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "Email", partyMember.ApplicationUserId);
             return View(partyMember);
         }
+        public ActionResult SeeExpenseChart()
+        {
+
+            return View();
+        }
 
         // POST: PartyMembers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

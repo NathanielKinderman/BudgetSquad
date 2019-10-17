@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
 
 namespace BudgetSquad.Models
 {
@@ -140,5 +141,54 @@ namespace BudgetSquad.Models
             }
             base.Dispose(disposing);
         }
+
+        //public void sendEmail(Email email)
+        //{
+        //    email.Message = "Who created this Event?" + Environment.NewLine +
+        //    "What is the Name of the Event you are creating?" + Environment.NewLine +
+        //    "Test Event" + Environment.NewLine +
+        //    "What city do you want to host this Event?" + Environment.NewLine +
+        //    "Milwaukee" + Environment.NewLine +
+        //    "State:" + Environment.NewLine +
+        //    "WI" + Environment.NewLine +
+        //    "What is the date of this event?" + Environment.NewLine +
+        //    "10 /16/2019" + Environment.NewLine +
+        //    "How many people are going to be invited" + Environment.NewLine +
+        //    "8" + Environment.NewLine +
+        //    "What is the total budget of this event" + Environment.NewLine +
+        //    "1000.00";
+        //    email.FirstName = "Nathaniel";
+        //    email.LastName = "Kinderman";
+        //    email.Subject = "Event Details";
+        //    var currentContact = db.PartyMembers.Where(c => c.FirstName == email.FirstName && c.LastName == email.LastName).FirstOrDefault();
+        //    var fromAddress = new MailAddress("budgetsquadtestplanner@gmail.com", "Budget Squad Test Planner");
+        //    var toAddress = new MailAddress($"{currentContact.EmailAddress}", $"{currentContact.FirstName} {currentContact.LastName}");
+        //    string password = "Squad_1";
+        //    string subject = email.Subject;
+        //    string body = email.Message;
+
+        //    var smtp = new SmtpClient
+        //    {
+        //        Host = "smtp.gmail.com",
+        //        Port = 587,
+        //        EnableSsl = true,
+        //        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //        UseDefaultCredentials = false,
+        //        Credentials = new NetworkCredential("budgetsquadtestplanner", "Squad_01")
+        //    };
+
+        //    using (var message = new MailMessage(fromAddress, toAddress))
+        //    {
+        //        string Subject = subject;
+        //        body = email.Message;
+        //    }
+        //    {
+        //        smtp.Send(fromAddress.Address, toAddress.Address, subject, body);
+        //    }
+
+
+
+        //}
+
     }
 }

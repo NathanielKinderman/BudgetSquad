@@ -6,6 +6,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
+using System.Net.Mail;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
+using SmtpClient = System.Net.Mail.SmtpClient;
 
 namespace BudgetSquad.Controllers
 {
@@ -16,7 +23,7 @@ namespace BudgetSquad.Controllers
         // GET: MadeActivites
         public ActionResult Index()
         {
-            var madeActivites = db.MadeActivites.Where(m => m.EventsName !=null).ToList();
+            var madeActivites = db.MadeActivites.Where(m => m.EventsName != null).ToList();
             return View(madeActivites.ToList());
         }
 
@@ -35,7 +42,7 @@ namespace BudgetSquad.Controllers
             return View(madeActivites);
         }
 
-        
+
         // GET: MadeActivites/Create
         public ActionResult Create()
         {
@@ -69,7 +76,7 @@ namespace BudgetSquad.Controllers
             activitesInfo.ActivityName = madeActivites.NameOfActivity;
             activitesInfo.CostOfActivity = madeActivites.EstimatedCostOfActivity;
             activitesInfo.InfoId = madeActivites.MadeActivitesId;
-            db.ActivitesInfos.Add(activitesInfo);          
+            db.ActivitesInfos.Add(activitesInfo);
             db.SaveChanges();
             return activitesInfo;
 
@@ -127,7 +134,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ventsName,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,ApplicationUserId")] MadeActivites madeActivites)
+        public ActionResult Edit([Bind(Include = "Id,EventsName,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,ApplicationUserId")] MadeActivites madeActivites)
         {
             if (ModelState.IsValid)
             {
@@ -172,6 +179,67 @@ namespace BudgetSquad.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //[HttpPost]
+        //public void sendEmail(Email email)
+        //{
+        //    var currentContact = db.PartyMembers.Where(c => c.FirstName == email.FirstName && c.LastName == email.LastName).FirstOrDefault();
+        //    var fromAddress = new MailAddress("budgetsquadtestplanner", "Test Planner");
+        //    var toAddress = new MailAddress($"{currentContact.EmailAddress}", $"{currentContact.FirstName} {currentContact.LastName}");
+        //    string password = "Planner_1";
+        //    string subject = email.Subject;
+        //    string body = email.Message;
+
+        //    var smtp = new SmtpClient
+        //    {
+        //        Host = "smtp.gmail.com",
+        //        Port = 587,
+        //        EnableSsl = true,
+        //        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //        UseDefaultCredentials = false,
+        //        Credentials = new NetworkCredential("budgetsquadtestplanner", password)
+        //    };
+
+        //    using (var message = new MailMessage(fromAddress, toAddress))
+        //    {
+        //        string Subject = subject;
+        //        body = email.Message;
+        //    }
+        //    {
+        //        smtp.Send(fromAddress.Address, toAddress.Address, subject, body);
+        //    }
+
+
+
+        //}
+
+        public ActionResult SendEmail()
+        {
+            MailAddress fromAddress = new MailAddress("budgetsquadtestplanner@gmail.com", "Nate");
+            MailAddress toAddress = new MailAddress("budgetsquadtestpartymember@gmail.com", "Bob");
+            string myPassword = "Budget_1";
+            string subject = "You Are Invited";
+            string body = "You are invited to an Event from BudgetSquad";
+            SmtpClient smtpServer = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, myPassword)
+            };
+            using (MailMessage message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtpServer.Send(message);
+            }
+            return View();
+     
         }
     }
 }
