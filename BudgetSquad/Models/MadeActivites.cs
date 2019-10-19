@@ -34,9 +34,9 @@ namespace BudgetSquad.Models
         [Display(Name = "How much do you think this Activity is going to cost?")]
         public double EstimatedCostOfActivity { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        [Display(Name = "UserID")]
-        public string ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("Planner")]
+        [Display(Name = "PlannerID")]
+        public int? PlannerId{ get; set; }
+        public Planner Planner { get; set; }
     }
 }

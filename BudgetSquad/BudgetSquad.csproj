@@ -192,17 +192,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910110055013_initial.cs" />
-    <Compile Include="Migrations\201910110055013_initial.Designer.cs">
-      <DependentUpon>201910110055013_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910110252599_update.cs" />
-    <Compile Include="Migrations\201910110252599_update.Designer.cs">
-      <DependentUpon>201910110252599_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910161729166_emailClass.cs" />
-    <Compile Include="Migrations\201910161729166_emailClass.Designer.cs">
-      <DependentUpon>201910161729166_emailClass.cs</DependentUpon>
+    <Compile Include="Migrations\201910190152083_update.cs" />
+    <Compile Include="Migrations\201910190152083_update.Designer.cs">
+      <DependentUpon>201910190152083_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -323,14 +315,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910110055013_initial.resx">
-      <DependentUpon>201910110055013_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910110252599_update.resx">
-      <DependentUpon>201910110252599_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910161729166_emailClass.resx">
-      <DependentUpon>201910161729166_emailClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910190152083_update.resx">
+      <DependentUpon>201910190152083_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

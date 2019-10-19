@@ -6,25 +6,24 @@
     </script>
     <script type="text/javascript">
         window.onload = function () {
-            var chart = new CanvasJS.Chart("chartContainer", {
-                theme: "light2",
-                animationEnabled: true,
-                title: {
-                    text: "Estimated Cost of Each Event"
-                },
-                subtitles: [
-                    { text: "Cost/Name of Activity" }
-                ],
-                data: [
-                    {
-                        type: "column", //change type to bar, line, area, pie, etc
-                        dataPoints: @(ViewBag.DataPoints)
-
-
-                    }
-                ]
-            });
-            chart.render();
+            var chart1 = new CanvasJS.Chart("chartContainer1", {
+               theme: "dark2", // "light2", "dark1", "dark2"
+               animationEnabled: true, // change to true
+               title: {
+                   text: "Insert Title Here"
+               },
+               data: [
+                   {
+                       // Change type to "bar", "area", "spline", "pie",etc.
+                       type: "column",
+                       dataPoints: [
+                           { label: "Name Of Activity: ", y: @ViewBag.nameOfActivity },
+                           { label: "Estimated Cost: ", y: @ViewBag.estimatedCost }
+                       ]
+                   }
+               ]
+           });
+           chart1.render();
         };
     </script>
     <title></title>
