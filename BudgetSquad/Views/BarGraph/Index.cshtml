@@ -1,48 +1,34 @@
-﻿
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE HTML>
+<html>
 <head>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
+    <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Women Nobel Laureates"
+	},
+	subtitles: [{
+		text: "from 1903 to 2015"
+	}],
+	axisY: {
+		title: "Number of Nobel Prizes",
+		gridThickness: 0
+	},
+	data: [{
+		type: "bar",
+		indexLabel: "{y}",
+		dataPoints: @Html.Raw(ViewBag.DataPoints)
+	}]
+});
+chart.render();
+
+}
     </script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var chart1 = new CanvasJS.Chart("chartContainer1", {
-               theme: "dark2", // "light2", "dark1", "dark2"
-               animationEnabled: true, // change to true
-               title: {
-                   text: "Insert Title Here"
-               },
-               data: [
-                   {
-                       // Change type to "bar", "area", "spline", "pie",etc.
-                       type: "column",
-                       dataPoints: [
-                           { label: "Name Of Activity: ", y: @ViewBag.nameOfActivity },
-                           { label: "Estimated Cost: ", y: @ViewBag.estimatedCost }
-                       ]
-                   }
-               ]
-           });
-           chart1.render();
-        };
-    </script>
-    <title></title>
 </head>
 <body>
-    <div id="chartContainer"></div>
-    <p>
-
-        @Html.ActionLink("Back To Activites", "Index", "MadeActivites")
-    </p>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
-</html>
-<p>
-
-   @Html.ActionLink("Back To Activites", "Index","MadeActivites")
-</p>
-
-@{
-    ViewBag.Title = "Canvas";
-}
-
-<h2>Canvas</h2>
+</html>  

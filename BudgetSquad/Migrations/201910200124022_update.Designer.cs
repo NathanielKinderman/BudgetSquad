@@ -13,7 +13,7 @@ namespace BudgetSquad.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201910190152083_update"; }
+            get { return "201910200124022_update"; }
         }
         
         string IMigrationMetadata.Source

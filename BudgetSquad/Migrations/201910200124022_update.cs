@@ -140,6 +140,7 @@ namespace BudgetSquad.Migrations
                         LastName = c.String(),
                         EmailAddress = c.String(),
                         PersonalBudget = c.String(),
+                        IsGoingToEvent = c.Boolean(nullable: false),
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)

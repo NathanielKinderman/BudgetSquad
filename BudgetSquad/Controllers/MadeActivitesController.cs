@@ -56,10 +56,14 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EventsName,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,ApplicationUserId")] MadeActivites madeActivites)
+        public ActionResult Create(MadeActivites madeActivites)
         {
             if (ModelState.IsValid)
             {
+                db.MadeActivites.Add(madeActivites);
+                db.SaveChanges();
+                int plannerId = db.Planners.Select(x => x.Id).FirstOrDefault();
+                madeActivites.PlannerId = plannerId;
                 db.MadeActivites.Add(madeActivites);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -134,7 +138,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EventsName,NameOfActivity,LocationOfActivity,Latitude,Longitude,City,State,TimeOfActivity,HowManyMembersInvolved,EstimatedCostOfActivity,ApplicationUserId")] MadeActivites madeActivites)
+        public ActionResult Edit(MadeActivites madeActivites)
         {
             if (ModelState.IsValid)
             {

@@ -20,6 +20,7 @@ namespace BudgetSquad.Models
         public string EmailAddress { get; set; }
         [Display(Name = "Personal Budget for the Event")]
         public string PersonalBudget { get; set; }
+        public bool IsGoingToEvent { get; set; }
 
         [ForeignKey("ApplicationUser")]
         [Display(Name = "UserID")]
