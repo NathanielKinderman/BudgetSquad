@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Checking In? Click here!</h2>
+<input type="checkbox" name="Are you going to come to this Event">
+@Html.ActionLink("Details", "Details","CreateEvents", new {Id=1}, null)
+

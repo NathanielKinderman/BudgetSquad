@@ -9,17 +9,19 @@ namespace BudgetSquad.Controllers
 {
     public class CheckingInController : Controller
     {
-        // GET: CheckingIn
-        public ActionResult Index(int? id)
-        {
-            PartyMember partyMember = new PartyMember();
-            bool HasCheckIn = partyMember.IsGoingToEvent;
-            if(HasCheckIn == true)
-            {
+        ApplicationDbContext db = new ApplicationDbContext();
 
-            }
-            return View();
+        public ActionResult Index()
+        {
+            var checkInStatus = "true";
+            var list = db.PartyMembers.Where(x => checkInStatus.Contains("true")).ToList();
+            return View(list);
         }
-        
+        //public ActionResult Index()
+        //{
+        //    var partyMemberList = db.PartyMembers.Where(x => x.IsGoingToEvent == true).ToList();
+        //    return View();
+        //}
+
     }
 }

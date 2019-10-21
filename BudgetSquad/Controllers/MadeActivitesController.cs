@@ -60,8 +60,8 @@ namespace BudgetSquad.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.MadeActivites.Add(madeActivites);
-                db.SaveChanges();
+                //db.MadeActivites.Add(madeActivites);
+                //db.SaveChanges();
                 int plannerId = db.Planners.Select(x => x.Id).FirstOrDefault();
                 madeActivites.PlannerId = plannerId;
                 db.MadeActivites.Add(madeActivites);
@@ -184,39 +184,7 @@ namespace BudgetSquad.Controllers
             }
             base.Dispose(disposing);
         }
-
-        //[HttpPost]
-        //public void sendEmail(Email email)
-        //{
-        //    var currentContact = db.PartyMembers.Where(c => c.FirstName == email.FirstName && c.LastName == email.LastName).FirstOrDefault();
-        //    var fromAddress = new MailAddress("budgetsquadtestplanner", "Test Planner");
-        //    var toAddress = new MailAddress($"{currentContact.EmailAddress}", $"{currentContact.FirstName} {currentContact.LastName}");
-        //    string password = "Planner_1";
-        //    string subject = email.Subject;
-        //    string body = email.Message;
-
-        //    var smtp = new SmtpClient
-        //    {
-        //        Host = "smtp.gmail.com",
-        //        Port = 587,
-        //        EnableSsl = true,
-        //        DeliveryMethod = SmtpDeliveryMethod.Network,
-        //        UseDefaultCredentials = false,
-        //        Credentials = new NetworkCredential("budgetsquadtestplanner", password)
-        //    };
-
-        //    using (var message = new MailMessage(fromAddress, toAddress))
-        //    {
-        //        string Subject = subject;
-        //        body = email.Message;
-        //    }
-        //    {
-        //        smtp.Send(fromAddress.Address, toAddress.Address, subject, body);
-        //    }
-
-
-
-        //}
+               
 
         public ActionResult SendEmail()
         {
@@ -224,7 +192,7 @@ namespace BudgetSquad.Controllers
             MailAddress toAddress = new MailAddress("budgetsquadtestpartymember@gmail.com", "Bob");
             string myPassword = "Budget_1";
             string subject = "You Are Invited";
-            string body = "You are invited to an Event from BudgetSquad";
+            string body = "You are invited to an Event from BudgetSquad. Please go to Bugdet Squad page and look the Event.";
             SmtpClient smtpServer = new SmtpClient
             {
                 Host = "smtp.gmail.com",

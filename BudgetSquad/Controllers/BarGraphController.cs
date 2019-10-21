@@ -21,15 +21,7 @@ namespace BudgetSquad.Controllers
             double estimatedCost = currentUser.EstimatedCostOfActivity;
             ViewBag.nameOfActivity = JsonConvert.SerializeObject(nameOfActivity);
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
-            return View();
-
-            //string loggedInUser = User.Identity.GetUserId();
-            //MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId = loggedInUser).FirstOrDefault();
-            //string nameOfActivity = currentUser.NameOfActivity;
-            //double estimatedCost = currentUser.EstimatedCostOfActivity;
-            //ViewBag.nameOfActivity = JsonConvert.SerializeObject(nameOfActivity);
-            //ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
-            //return View();
+            return View();            
 
 
         }

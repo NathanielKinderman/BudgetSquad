@@ -33,6 +33,8 @@ namespace BudgetSquad.Models
         public string HowManyMembersInvolved { get; set; }
         [Display(Name = "How much do you think this Activity is going to cost?")]
         public double EstimatedCostOfActivity { get; set; }
+        [Display(Name = "Are you planning on coming to this Activity?")]
+        public bool CheckingInToActivity { get; set; }
 
         [ForeignKey("Planner")]
         [Display(Name = "PlannerID")]

@@ -197,6 +197,10 @@
     <Compile Include="Migrations\201910200124022_update.Designer.cs">
       <DependentUpon>201910200124022_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910202059442_boolboolbool.cs" />
+    <Compile Include="Migrations\201910202059442_boolboolbool.Designer.cs">
+      <DependentUpon>201910202059442_boolboolbool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivitesInfo.cs" />
@@ -297,10 +301,10 @@
     <Content Include="Views\BarGraph\Index.cshtml" />
     <Content Include="Views\MadeActivites\Map.cshtml" />
     <Content Include="Views\MadeActivites\SendEmail.cshtml" />
+    <Content Include="Views\CheckingIn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CheckingIn\" />
     <Folder Include="Views\Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +323,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910200124022_update.resx">
       <DependentUpon>201910200124022_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910202059442_boolboolbool.resx">
+      <DependentUpon>201910202059442_boolboolbool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
