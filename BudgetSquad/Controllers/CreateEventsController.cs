@@ -23,7 +23,7 @@ namespace BudgetSquad.Models
         }
 
         // GET: CreateEvents/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -50,13 +50,12 @@ namespace BudgetSquad.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EventsName,City,State,DateOfEvent,NumberOfMembers,TheBudgetOfEvent,Planner,ApplicationUserId")] CreateEvent createEvent)
+        public ActionResult Create(CreateEvent createEvent)
         {
             if (ModelState.IsValid)
             {
-                var currentPlannerId = User.Identity.GetUserId();
-                Planner planner = new Planner();
-                planner.ApplicationUserId = currentPlannerId;                
+                var planner = db.Planners.Select(p => p.Id).FirstOrDefault();
+                createEvent.PlannerId = planner;                
                 db.CreateEvents.Add(createEvent);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -75,7 +74,7 @@ namespace BudgetSquad.Models
 
 
         // GET: CreateEvents/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -95,7 +94,7 @@ namespace BudgetSquad.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EventsName,City,State,DateOfEvent,NumberOfMembers,TheBudgetOfEvent,Planner,ApplicationUserId")] CreateEvent createEvent)
+        public ActionResult Edit(CreateEvent createEvent)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +107,7 @@ namespace BudgetSquad.Models
         }
 
         // GET: CreateEvents/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -142,53 +141,7 @@ namespace BudgetSquad.Models
             base.Dispose(disposing);
         }
 
-        //public void sendEmail(Email email)
-        //{
-        //    email.Message = "Who created this Event?" + Environment.NewLine +
-        //    "What is the Name of the Event you are creating?" + Environment.NewLine +
-        //    "Test Event" + Environment.NewLine +
-        //    "What city do you want to host this Event?" + Environment.NewLine +
-        //    "Milwaukee" + Environment.NewLine +
-        //    "State:" + Environment.NewLine +
-        //    "WI" + Environment.NewLine +
-        //    "What is the date of this event?" + Environment.NewLine +
-        //    "10 /16/2019" + Environment.NewLine +
-        //    "How many people are going to be invited" + Environment.NewLine +
-        //    "8" + Environment.NewLine +
-        //    "What is the total budget of this event" + Environment.NewLine +
-        //    "1000.00";
-        //    email.FirstName = "Nathaniel";
-        //    email.LastName = "Kinderman";
-        //    email.Subject = "Event Details";
-        //    var currentContact = db.PartyMembers.Where(c => c.FirstName == email.FirstName && c.LastName == email.LastName).FirstOrDefault();
-        //    var fromAddress = new MailAddress("budgetsquadtestplanner@gmail.com", "Budget Squad Test Planner");
-        //    var toAddress = new MailAddress($"{currentContact.EmailAddress}", $"{currentContact.FirstName} {currentContact.LastName}");
-        //    string password = "Squad_1";
-        //    string subject = email.Subject;
-        //    string body = email.Message;
-
-        //    var smtp = new SmtpClient
-        //    {
-        //        Host = "smtp.gmail.com",
-        //        Port = 587,
-        //        EnableSsl = true,
-        //        DeliveryMethod = SmtpDeliveryMethod.Network,
-        //        UseDefaultCredentials = false,
-        //        Credentials = new NetworkCredential("budgetsquadtestplanner", "Squad_01")
-        //    };
-
-        //    using (var message = new MailMessage(fromAddress, toAddress))
-        //    {
-        //        string Subject = subject;
-        //        body = email.Message;
-        //    }
-        //    {
-        //        smtp.Send(fromAddress.Address, toAddress.Address, subject, body);
-        //    }
-
-
-
-        //}
+        
 
     }
 }

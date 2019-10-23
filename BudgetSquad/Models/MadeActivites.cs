@@ -40,9 +40,9 @@ namespace BudgetSquad.Models
         [Display(Name = "Would you come to this Activity?")]
         public bool CheckingInToActivity { get; set; }
 
-        [ForeignKey("CreateEvent")]
-        
-        public int CreateEventId{ get; set; }
-        public CreateEvent CreateEvent { get; set; }
+        [ForeignKey("Planner")]
+        [Display(Name = "PlannerId")]
+        public int PlannerId { get; set; }
+        public Planner Planner { get; set; }
     }
 }

@@ -39,6 +39,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EstimatedCostOfActivity)
         </th>
+        <th>
+            @ViewBag.BudgetTitle
+        </th>
         <th></th>
     </tr>
 
@@ -71,7 +74,9 @@
     <td>
         @Html.DisplayFor(modelItem => item.EstimatedCostOfActivity)
     </td>
-
+    <td>
+        @ViewBag.Budget
+    </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.MadeActivitesId }) |
         @Html.ActionLink("Details", "Details", new { id = item.MadeActivitesId }) |

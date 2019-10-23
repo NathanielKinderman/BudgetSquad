@@ -16,7 +16,7 @@ namespace BudgetSquad.Controllers
         // GET: Home
         public ActionResult Index(int? id)
         {
-            MadeActivites currentUser = context.MadeActivites.Where(x => x.CreateEventId == id).FirstOrDefault();
+            MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
             ViewBag.nameOfActivity = nameOfActivity;

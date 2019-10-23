@@ -63,6 +63,20 @@ namespace BudgetSquad.Controllers
             return View(partyMember);
         }
 
+        public ActionResult VoteOnActivites()
+        {
+            var FoodDrinkList = new List<string>() { "Burgers", "Italian","Sushi","Mexican",};
+            ViewBag.FoodDrinkList = FoodDrinkList;
+
+            var EntertainmentList = new List<string> { "Bars", "Sport Event", "Threater/Concert", "Dancing"};
+            ViewBag.EntertainmentList = EntertainmentList;
+
+            var LeisureList = new List<string>() { "Spa/Health", "Museum", "Outdoor Activites" };
+            ViewBag.LeisureList = LeisureList;
+            return View(); 
+
+        }
+
         // GET: PartyMembers/Edit/5
         public ActionResult Edit(int? id)
         {
