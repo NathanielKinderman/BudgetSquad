@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BudgetSquad.Models.PartyMember>
+@{
+    ViewBag.Title = "AttendingPartyMembers";
+}
+<h2>AttendingPartyMembers</h2>
+<div>
+    <h4>Attending Party Members</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+               
+            </tr>
+        }
+    </table>
+</div>
+

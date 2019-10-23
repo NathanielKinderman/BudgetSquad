@@ -59,18 +59,25 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TheBudgetOfEvent)
+            @Html.DisplayNameFor(model => model.TheMaxBudgetOfEvent)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TheBudgetOfEvent)
+            @Html.DisplayFor(model => model.TheMaxBudgetOfEvent)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.TheMinBudgetOfEvent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TheMinBudgetOfEvent)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlannerId }) |
     @Html.ActionLink("Back to List", "Index") |
     @Html.ActionLink("See Activites", "Index", "MadeActivites") |
-    @Html.ActionLink("Send Email", "sendEmail","CreateEvent", new { id = Model.ApplicationUserId})
+    @Html.ActionLink("Send Email", "sendEmail","CreateEvent", new { id = Model.PlannerId})
 </p>

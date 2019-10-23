@@ -16,10 +16,10 @@ namespace BudgetSquad.Controllers
         // GET: Home
         public ActionResult Index(int? id)
         {
-            MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
+            MadeActivites currentUser = context.MadeActivites.Where(x => x.CreateEventId == id).FirstOrDefault();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
-            ViewBag.nameOfActivity = JsonConvert.SerializeObject(nameOfActivity);
+            ViewBag.nameOfActivity = nameOfActivity;
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
             return View();            
 

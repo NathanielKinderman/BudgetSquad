@@ -21,6 +21,7 @@ namespace BudgetSquad.Models
         [Display(Name = "Personal Budget for the Event")]
         public string PersonalBudget { get; set; }
         public bool IsGoingToEvent { get; set; }
+        public List<PartyMember> Members { get; set; }
 
         [ForeignKey("ApplicationUser")]
         [Display(Name = "UserID")]

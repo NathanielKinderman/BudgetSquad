@@ -13,6 +13,7 @@ using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
 using SmtpClient = System.Net.Mail.SmtpClient;
+using System.Collections.Generic;
 
 namespace BudgetSquad.Controllers
 {
@@ -23,8 +24,25 @@ namespace BudgetSquad.Controllers
         // GET: MadeActivites
         public ActionResult Index()
         {
-            var madeActivites = db.MadeActivites.Where(m => m.EventsName != null).ToList();
-            return View(madeActivites.ToList());
+            //var madeActivites = db.MadeActivites.Where(m => m.EventsName != null).ToList();
+            CreateEvent createEvent = new CreateEvent();
+            var madeActivitiesId = db.MadeActivites.Select(x => x.MadeActivitesId).FirstOrDefault();
+
+            var createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
+
+            var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
+            
+            
+                return View(matchingEventToActivity);
+            
+
+            // do another query on CreateEvents table to find event that matches with activity
+            //Ask do I need to change my foreign keys, or is there a work around to find matching event to activity?
+            //var matchingActivites = db.CreateEvents.Where(m=>m.)
+
+
+            // ViewBag.Budget = event.TheMinBudgetOfEvent;
+            
         }
 
         // GET: MadeActivites/Details/5
@@ -41,13 +59,14 @@ namespace BudgetSquad.Controllers
             }
             return View(madeActivites);
         }
-
+        
 
         // GET: MadeActivites/Create
         public ActionResult Create()
         {
-            MadeActivites madeActivites = new MadeActivites();
-            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName");
+            var ActivityList = new List<string>() { "Food/Drink", "Entertainment", "Leisure" };
+            ViewBag.ActivityList = ActivityList;
+
             return View();
         }
 
@@ -62,8 +81,8 @@ namespace BudgetSquad.Controllers
             {
                 //db.MadeActivites.Add(madeActivites);
                 //db.SaveChanges();
-                int plannerId = db.Planners.Select(x => x.Id).FirstOrDefault();
-                madeActivites.PlannerId = plannerId;
+                int createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
+                madeActivites.CreateEventId = createEventId;
                 db.MadeActivites.Add(madeActivites);
                 db.SaveChanges();
                 return RedirectToAction("Index");

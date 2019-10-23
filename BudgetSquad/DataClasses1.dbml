@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="aspnet-BudgetSquad-20191008101329" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-BudgetSquad-20191008101329;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="aspnet_BudgetSquad_20191008101329ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ActivitesInfoes" Member="ActivitesInfoes">
+    <Type Name="ActivitesInfoe">
+      <Column Name="InfoId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActivityName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CostOfActivity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="MadeActivitesId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MadeActivite_ActivitesInfoe" Member="MadeActivite" ThisKey="MadeActivitesId" OtherKey="MadeActivitesId" Type="MadeActivite" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
+    <Type Name="AspNetRole">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetRole_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="RoleId" Type="AspNetUserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserClaims" Member="AspNetUserClaims">
+    <Type Name="AspNetUserClaim">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="ClaimType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ClaimValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="AspNetUser_AspNetUserClaim" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserLogins" Member="AspNetUserLogins">
+    <Type Name="AspNetUserLogin">
+      <Column Name="LoginProvider" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderKey" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AspNetUser_AspNetUserLogin" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserRoles" Member="AspNetUserRoles">
+    <Type Name="AspNetUserRole">
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AspNetRole_AspNetUserRole" Member="AspNetRole" ThisKey="RoleId" OtherKey="Id" Type="AspNetRole" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUsers" Member="AspNetUsers">
+    <Type Name="AspNetUser">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="EmailConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SecurityStamp" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNumberConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TwoFactorEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LockoutEndDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockoutEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AccessFailedCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetUser_AspNetUserClaim" Member="AspNetUserClaims" ThisKey="Id" OtherKey="UserId" Type="AspNetUserClaim" />
+      <Association Name="AspNetUser_AspNetUserLogin" Member="AspNetUserLogins" ThisKey="Id" OtherKey="UserId" Type="AspNetUserLogin" />
+      <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="UserId" Type="AspNetUserRole" />
+      <Association Name="AspNetUser_CreateEvent" Member="CreateEvents" ThisKey="Id" OtherKey="ApplicationUserId" Type="CreateEvent" />
+      <Association Name="AspNetUser_PartyMember" Member="PartyMembers" ThisKey="Id" OtherKey="ApplicationUserId" Type="PartyMember" />
+      <Association Name="AspNetUser_Planner" Member="Planners" ThisKey="Id" OtherKey="ApplicationUserId" Type="Planner" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CreateEvents" Member="CreateEvents">
+    <Type Name="CreateEvent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventsName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NameOfPlanner" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateOfEvent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NumberOfMembers" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationUserId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TheMaxBudgetOfEvent" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="TheMinBudgetOfEvent" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetUser_CreateEvent" Member="AspNetUser" ThisKey="ApplicationUserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MadeActivites" Member="MadeActivites">
+    <Type Name="MadeActivite">
+      <Column Name="MadeActivitesId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventsName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NameOfActivity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationOfActivity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeOfActivity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HowManyMembersInvolved" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EstimatedCostOfActivity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PlannerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckingInToActivity" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EstimatedMinimumCostOfActivity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="TypeOfActivity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MadeActivite_ActivitesInfoe" Member="ActivitesInfoes" ThisKey="MadeActivitesId" OtherKey="MadeActivitesId" Type="ActivitesInfoe" />
+      <Association Name="Planner_MadeActivite" Member="Planner" ThisKey="PlannerId" OtherKey="Id" Type="Planner" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartyMembers" Member="PartyMembers">
+    <Type Name="PartyMember">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PersonalBudget" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsGoingToEvent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationUserId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PartyMember_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PartyMember_PartyMember" Member="PartyMembers" ThisKey="Id" OtherKey="PartyMember_Id" Type="PartyMember" />
+      <Association Name="AspNetUser_PartyMember" Member="AspNetUser" ThisKey="ApplicationUserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+      <Association Name="PartyMember_PartyMember" Member="PartyMember1" ThisKey="PartyMember_Id" OtherKey="Id" Type="PartyMember" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Planners" Member="Planners">
+    <Type Name="Planner">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Budget" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ApplicationUserId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="Planner_MadeActivite" Member="MadeActivites" ThisKey="Id" OtherKey="PlannerId" Type="MadeActivite" />
+      <Association Name="AspNetUser_Planner" Member="AspNetUser" ThisKey="ApplicationUserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

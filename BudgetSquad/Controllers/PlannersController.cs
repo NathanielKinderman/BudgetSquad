@@ -29,7 +29,7 @@ namespace BudgetSquad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Planner planner = db.Planners.Find(id);
+            var planner = db.Planners.Find(id);
             if (planner == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,fullName,EmailAddress,Budget,ApplicationUserId")] Planner planner)
+        public ActionResult Create([Bind(Include = "Id,fullName,EmailAddress,Budget,ApplicationUserId")] Models.Planner planner)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace BudgetSquad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Planner planner = db.Planners.Find(id);
+            var planner = db.Planners.Find(id);
             if (planner == null)
             {
                 return HttpNotFound();
@@ -103,7 +103,7 @@ namespace BudgetSquad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Planner planner = db.Planners.Find(id);
+            var planner = db.Planners.Find(id);
             if (planner == null)
             {
                 return HttpNotFound();
@@ -116,7 +116,7 @@ namespace BudgetSquad.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Planner planner = db.Planners.Find(id);
+            var planner = db.Planners.Find(id);
             db.Planners.Remove(planner);
             db.SaveChanges();
             return RedirectToAction("Index");

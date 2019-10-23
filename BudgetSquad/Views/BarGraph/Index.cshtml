@@ -6,7 +6,7 @@
    var chart = new CanvasJS.Chart("chartContainer",
    {
      title:{
-       text: "indexLabel at dataSeries",
+       text: "Estimated Cost",
        fontSize: 20
      },
      data: [
@@ -16,7 +16,8 @@
         indexLabelPlacement: "outside",
         indexLabelOrientation: "horizontal",
         dataPoints: [
-          { label: "test", y: @ViewBag.estimatedCost }
+            { label: "@ViewBag.nameOfActivity", y: @ViewBag.estimatedCost  },
+            { label: "@ViewBag.nameOfActivity", y: @ViewBag.estimatedCost }
         ]
       }
      ]

@@ -13,14 +13,21 @@ namespace BudgetSquad.Controllers
 
         public ActionResult Index()
         {
-            var checkInStatus = "true";
-            var list = db.PartyMembers.Where(x => checkInStatus.Contains("true")).ToList();
-            return View(list);
+            //var currentUser = db.PartyMembers.Where(x => x.Id == id).FirstOrDefault();
+            //var isCheckedIn = db.PartyMembers.Count(currentUser.IsGoingToEvent)
+            //    var checkInStatus = "true";
+            //    var list = db.PartyMembers.Where(x => checkInStatus.Contains("true")).ToList();
+                return View();
         }
-        //public ActionResult Index()
+        //public ActionResult AttendingPartyMembers()
         //{
-        //    var partyMemberList = db.PartyMembers.Where(x => x.IsGoingToEvent == true).ToList();
-        //    return View();
+        //    //List<PartyMember> members = new List<PartyMember>();
+
+        //    List<PartyMember> partyMemberList = db.PartyMembers.Where(x => x.IsGoingToEvent == true).OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
+
+
+        //    ViewBag.partyList = partyMemberList;
+        //    return View(partyMemberList);
         //}
 
     }

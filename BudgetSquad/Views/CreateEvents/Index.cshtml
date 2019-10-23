@@ -11,7 +11,7 @@
 </p>
 <table class="table">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model[0].EventsName)
         </th>
@@ -28,7 +28,10 @@
             @Html.DisplayNameFor(model => model[0].NumberOfMembers)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].TheBudgetOfEvent)
+            @Html.DisplayNameFor(model => model[0].TheMaxBudgetOfEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].TheMinBudgetOfEvent)
         </th>
         <th></th>
     </tr>
@@ -52,12 +55,15 @@
             @Html.DisplayFor(modelItem => item.NumberOfMembers)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TheBudgetOfEvent)
+            @Html.DisplayFor(modelItem => item.TheMaxBudgetOfEvent)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | 
-            @Html.ActionLink("Details","Details", new { id = item.Id })|
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.TheMinBudgetOfEvent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlannerId }) | 
+            @Html.ActionLink("Details","Details", new { id = item.PlannerId })|
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlannerId })
         </td>
     </tr>
 }

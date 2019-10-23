@@ -12,6 +12,8 @@ namespace BudgetSquad.Models
     {
         [Key]
         public int MadeActivitesId { get; set; }
+        [Display(Name ="What Kind of Activity is this?")]
+        public string TypeOfActivity { get; set; }
         
         [Required]
         [Display(Name = "What is the Name of the Event that is Activity is for?")]
@@ -33,12 +35,14 @@ namespace BudgetSquad.Models
         public string HowManyMembersInvolved { get; set; }
         [Display(Name = "How much do you think this Activity is going to cost?")]
         public double EstimatedCostOfActivity { get; set; }
-        [Display(Name = "Are you planning on coming to this Activity?")]
+        [Display(Name= "How much do you think what is the minimum amount you will spend?")]
+        public double EstimatedMinimumCostOfActivity { get; set; }
+        [Display(Name = "Would you come to this Activity?")]
         public bool CheckingInToActivity { get; set; }
 
-        [ForeignKey("Planner")]
-        [Display(Name = "PlannerID")]
-        public int? PlannerId{ get; set; }
-        public Planner Planner { get; set; }
+        [ForeignKey("CreateEvent")]
+        
+        public int CreateEventId{ get; set; }
+        public CreateEvent CreateEvent { get; set; }
     }
 }

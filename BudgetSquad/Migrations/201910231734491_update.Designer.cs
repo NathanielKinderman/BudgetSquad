@@ -7,13 +7,13 @@ namespace BudgetSquad.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class boolboolbool : IMigrationMetadata
+    public sealed partial class update : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(boolboolbool));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910202059442_boolboolbool"; }
+            get { return "201910231734491_update"; }
         }
         
         string IMigrationMetadata.Source

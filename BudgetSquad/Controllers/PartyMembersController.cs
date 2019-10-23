@@ -28,7 +28,7 @@ namespace BudgetSquad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PartyMember partyMember = db.PartyMembers.Find(id);
+            var partyMember = db.PartyMembers.Find(id);
             if (partyMember == null)
             {
                 return HttpNotFound();
@@ -49,11 +49,11 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,PersonalBudget,ApplicationUserId")] PartyMember partyMember)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,PersonalBudget,ApplicationUserId")] Models.PartyMember partyMember)
         {
             if (ModelState.IsValid)
             {
-                
+                partyMember.IsGoingToEvent = true;
                 db.PartyMembers.Add(partyMember);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,7 +70,7 @@ namespace BudgetSquad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PartyMember partyMember = db.PartyMembers.Find(id);
+            var partyMember = db.PartyMembers.Find(id);
             if (partyMember == null)
             {
                 return HttpNotFound();
@@ -108,7 +108,7 @@ namespace BudgetSquad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PartyMember partyMember = db.PartyMembers.Find(id);
+            var partyMember = db.PartyMembers.Find(id);
             if (partyMember == null)
             {
                 return HttpNotFound();
@@ -121,7 +121,7 @@ namespace BudgetSquad.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PartyMember partyMember = db.PartyMembers.Find(id);
+            var partyMember = db.PartyMembers.Find(id);
             db.PartyMembers.Remove(partyMember);
             db.SaveChanges();
             return RedirectToAction("Index");

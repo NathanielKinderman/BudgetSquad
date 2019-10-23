@@ -90,11 +90,18 @@
             @Html.DisplayFor(model => model.EstimatedCostOfActivity)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.EstimatedMinimumCostOfActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedMinimumCostOfActivity)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.CheckingInToActivity)
         </dt>
 
         <dd>
-            
+
             <input type="checkbox" checked>
         </dd>
 
@@ -103,7 +110,8 @@
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ |
     @Html.ActionLink("Back to List", "Index")|
-    @Html.ActionLink("See Costs for All Actvities", "Index", "BarGraph")|
+    @Html.ActionLink("See Costs for All Actvities", "Index", "BarGraph", new { id = Model.CreateEventId },null)|
     @Html.ActionLink("See Map", "Map", "MadeActivites")|
-    @Html.ActionLink("Send Email to Party Memebers","SendEmail", "MadeActivites")
+    @Html.ActionLink("Send Email to Party Memebers","SendEmail", "MadeActivites")|
+    @Html.ActionLink("See whos Attending","AttendingPartyMembers","CheckingIn")
 </p>

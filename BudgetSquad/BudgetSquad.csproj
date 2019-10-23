@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -190,16 +191,17 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartyMembersController.cs" />
     <Compile Include="Controllers\PlannersController.cs" />
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910200124022_update.cs" />
-    <Compile Include="Migrations\201910200124022_update.Designer.cs">
-      <DependentUpon>201910200124022_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910202059442_boolboolbool.cs" />
-    <Compile Include="Migrations\201910202059442_boolboolbool.Designer.cs">
-      <DependentUpon>201910202059442_boolboolbool.cs</DependentUpon>
+    <Compile Include="Migrations\201910231734491_update.cs" />
+    <Compile Include="Migrations\201910231734491_update.Designer.cs">
+      <DependentUpon>201910231734491_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -229,8 +231,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JS\Eventbrite.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -302,6 +313,8 @@
     <Content Include="Views\MadeActivites\Map.cshtml" />
     <Content Include="Views\MadeActivites\SendEmail.cshtml" />
     <Content Include="Views\CheckingIn\Index.cshtml" />
+    <Content Include="Views\CheckingIn\AttendingPartyMembers.cshtml" />
+    <Content Include="Views\CreateGenreOfActvity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,11 +334,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910200124022_update.resx">
-      <DependentUpon>201910200124022_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910202059442_boolboolbool.resx">
-      <DependentUpon>201910202059442_boolboolbool.cs</DependentUpon>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910231734491_update.resx">
+      <DependentUpon>201910231734491_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

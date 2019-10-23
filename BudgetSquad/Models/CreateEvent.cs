@@ -10,7 +10,7 @@ namespace BudgetSquad.Models
     public class CreateEvent
     {
         [Key]
-        public int Id { get; set; }
+        public int EventId { get; set; }
         [Required]
         [Display(Name = "What is the Name of the Event you are creating?")]
         public string EventsName { get; set; }
@@ -27,14 +27,16 @@ namespace BudgetSquad.Models
         public string DateOfEvent { get; set; }
         [Display(Name = "How many people are going to be invited")]
         public double NumberOfMembers { get; set; }
-        [Display(Name = "What is the total budget of this event")]
+        [Display(Name = "What is the max budget of this event")]
 
-        public string TheBudgetOfEvent { get; set; }
+        public double TheMaxBudgetOfEvent { get; set; }
+        [Display(Name="What is the minimum budget of this event")]
+        public double TheMinBudgetOfEvent { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        [Display(Name = "UserID")]
-        public string ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("Planner")]
+        [Display(Name = "PlannerId")]
+        public int PlannerId { get; set; }
+        public Planner Planner { get; set; }
 
 
         [NotMapped]
