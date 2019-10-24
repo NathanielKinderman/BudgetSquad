@@ -38,28 +38,9 @@ namespace BudgetSquad.Migrations
                         EstimatedCostOfActivity = c.Double(nullable: false),
                         EstimatedMinimumCostOfActivity = c.Double(nullable: false),
                         CheckingInToActivity = c.Boolean(nullable: false),
-                        CreateEventId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.MadeActivitesId)
-                .ForeignKey("dbo.CreateEvents", t => t.CreateEventId, cascadeDelete: true)
-                .Index(t => t.CreateEventId);
-            
-            CreateTable(
-                "dbo.CreateEvents",
-                c => new
-                    {
-                        EventId = c.Int(nullable: false, identity: true),
-                        EventsName = c.String(nullable: false),
-                        NameOfPlanner = c.String(),
-                        City = c.String(),
-                        State = c.String(),
-                        DateOfEvent = c.String(),
-                        NumberOfMembers = c.Double(nullable: false),
-                        TheMaxBudgetOfEvent = c.Double(nullable: false),
-                        TheMinBudgetOfEvent = c.Double(nullable: false),
                         PlannerId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.EventId)
+                .PrimaryKey(t => t.MadeActivitesId)
                 .ForeignKey("dbo.Planners", t => t.PlannerId, cascadeDelete: true)
                 .Index(t => t.PlannerId);
             
@@ -136,6 +117,25 @@ namespace BudgetSquad.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.CreateEvents",
+                c => new
+                    {
+                        EventId = c.Int(nullable: false, identity: true),
+                        EventsName = c.String(nullable: false),
+                        NameOfPlanner = c.String(),
+                        City = c.String(),
+                        State = c.String(),
+                        DateOfEvent = c.String(),
+                        NumberOfMembers = c.Double(nullable: false),
+                        TheMaxBudgetOfEvent = c.Double(nullable: false),
+                        TheMinBudgetOfEvent = c.Double(nullable: false),
+                        PlannerId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.EventId)
+                .ForeignKey("dbo.Planners", t => t.PlannerId, cascadeDelete: true)
+                .Index(t => t.PlannerId);
+            
+            CreateTable(
                 "dbo.PartyMembers",
                 c => new
                     {
@@ -145,6 +145,9 @@ namespace BudgetSquad.Migrations
                         EmailAddress = c.String(),
                         PersonalBudget = c.String(),
                         IsGoingToEvent = c.Boolean(nullable: false),
+                        FoodDrinkList = c.String(),
+                        EntertainmentList = c.String(),
+                        LeisureList = c.String(),
                         ApplicationUserId = c.String(maxLength: 128),
                         PartyMember_Id = c.Int(),
                     })
@@ -171,9 +174,9 @@ namespace BudgetSquad.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.PartyMembers", "PartyMember_Id", "dbo.PartyMembers");
             DropForeignKey("dbo.PartyMembers", "ApplicationUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.ActivitesInfoes", "MadeActivitesId", "dbo.MadeActivites");
-            DropForeignKey("dbo.MadeActivites", "CreateEventId", "dbo.CreateEvents");
             DropForeignKey("dbo.CreateEvents", "PlannerId", "dbo.Planners");
+            DropForeignKey("dbo.ActivitesInfoes", "MadeActivitesId", "dbo.MadeActivites");
+            DropForeignKey("dbo.MadeActivites", "PlannerId", "dbo.Planners");
             DropForeignKey("dbo.Planners", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -181,23 +184,23 @@ namespace BudgetSquad.Migrations
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.PartyMembers", new[] { "PartyMember_Id" });
             DropIndex("dbo.PartyMembers", new[] { "ApplicationUserId" });
+            DropIndex("dbo.CreateEvents", new[] { "PlannerId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Planners", new[] { "ApplicationUserId" });
-            DropIndex("dbo.CreateEvents", new[] { "PlannerId" });
-            DropIndex("dbo.MadeActivites", new[] { "CreateEventId" });
+            DropIndex("dbo.MadeActivites", new[] { "PlannerId" });
             DropIndex("dbo.ActivitesInfoes", new[] { "MadeActivitesId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.PartyMembers");
+            DropTable("dbo.CreateEvents");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Planners");
-            DropTable("dbo.CreateEvents");
             DropTable("dbo.MadeActivites");
             DropTable("dbo.ActivitesInfoes");
         }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BudgetSquad.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BudgetSquad.Controllers
 {
@@ -39,8 +40,14 @@ namespace BudgetSquad.Controllers
         // GET: PartyMembers/Create
         public ActionResult Create()
         {
-            PartyMember partyMember = new PartyMember();
-            //ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "Email");
+            var FoodDrinkList = new List<string>() { "Burgers", "Italian", "Sushi", "Mexican", "Other" };
+            ViewBag.FoodDrinkList = FoodDrinkList;
+
+            var EntertainmentList = new List<string> { "Bars", "Sport Event", "Threater/Concert", "Dancing", "Other" };
+            ViewBag.EntertainmentList = EntertainmentList;
+
+            var LeisureList = new List<string>() { "Spa/Health", "Museum", "Outdoor Activites", "Other" };
+            ViewBag.LeisureList = LeisureList;
             return View();
         }
 
@@ -49,7 +56,7 @@ namespace BudgetSquad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,PersonalBudget,ApplicationUserId")] Models.PartyMember partyMember)
+        public ActionResult Create( Models.PartyMember partyMember)
         {
             if (ModelState.IsValid)
             {
@@ -63,19 +70,53 @@ namespace BudgetSquad.Controllers
             return View(partyMember);
         }
 
-        public ActionResult VoteOnActivites()
+        public ActionResult CheckingIn()
         {
-            var FoodDrinkList = new List<string>() { "Burgers", "Italian","Sushi","Mexican",};
+            var partyMembers = db.PartyMembers;
+            return View();
+        }
+
+
+
+
+        //GET: Votes
+        [HttpGet]
+        public ActionResult VoteOnActivites(int? id)
+        {
+            var FoodDrinkList = new List<string>() { "Burgers", "Italian","Sushi","Mexican","Other"};
             ViewBag.FoodDrinkList = FoodDrinkList;
 
-            var EntertainmentList = new List<string> { "Bars", "Sport Event", "Threater/Concert", "Dancing"};
+            var EntertainmentList = new List<string> { "Bars", "Sport Event", "Threater/Concert", "Dancing","Other"};
             ViewBag.EntertainmentList = EntertainmentList;
 
-            var LeisureList = new List<string>() { "Spa/Health", "Museum", "Outdoor Activites" };
+            var LeisureList = new List<string>() { "Spa/Health", "Museum", "Outdoor Activites","Other" };
             ViewBag.LeisureList = LeisureList;
             return View(); 
 
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PostVoteOnActivites(BudgetSquad.Models.PartyMember partyMember)
+        {
+            //string currentUserId = User.Identity.GetUserId();
+            var foundUser = db.PartyMembers.Where(x => x.Id == partyMember.Id).FirstOrDefault();
+            //PartyMember partyMember = new PartyMember();
+            if (ModelState.IsValid)
+            {
+                partyMember.EntertainmentList = foundUser.EntertainmentList;
+                partyMember.FoodDrinkList = foundUser.FoodDrinkList;
+                partyMember.LeisureList = foundUser.LeisureList;
+                db.PartyMembers.Add(partyMember);
+                db.SaveChanges();
+                return RedirectToAction("PostVote"); 
+            }
+            return View("PostVote");
+
+            
+        }
+
+
+
 
         // GET: PartyMembers/Edit/5
         public ActionResult Edit(int? id)

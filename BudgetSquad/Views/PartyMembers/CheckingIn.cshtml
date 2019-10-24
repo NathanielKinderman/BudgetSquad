@@ -1,0 +1,15 @@
+﻿@model BudgetSquad.Models.PartyMember
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Checking In? Click here!</h2>
+<h3>Are you going to come to this Event</h3>
+<div> @Html.CheckBoxFor(model => model.IsGoingToEvent, false)</div>
+<input type="submit" class= "btn btn-outline>-primary rounded-0" value="Submit" />
+@Html.ActionLink("Vote for Activities", "VoteOnActivites","PartyMembers" )
+
+

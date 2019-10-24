@@ -199,13 +199,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910231734491_update.cs" />
-    <Compile Include="Migrations\201910231734491_update.Designer.cs">
-      <DependentUpon>201910231734491_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910231750484_update2.cs" />
-    <Compile Include="Migrations\201910231750484_update2.Designer.cs">
-      <DependentUpon>201910231750484_update2.cs</DependentUpon>
+    <Compile Include="Migrations\201910241729228_update.cs" />
+    <Compile Include="Migrations\201910241729228_update.Designer.cs">
+      <DependentUpon>201910241729228_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -317,10 +313,12 @@
     <Content Include="Views\BarGraph\Index.cshtml" />
     <Content Include="Views\MadeActivites\Map.cshtml" />
     <Content Include="Views\MadeActivites\SendEmail.cshtml" />
-    <Content Include="Views\CheckingIn\Index.cshtml" />
+    <Content Include="Views\PartyMembers\CheckingIn.cshtml" />
     <Content Include="Views\CheckingIn\AttendingPartyMembers.cshtml" />
     <Content Include="Views\CreateGenreOfActvity.cshtml" />
-    <Content Include="Views\BarGraph\ActvitiesBreakdown.cshtml" />
+    <Content Include="Views\BarGraph\ActivitiesBreakdown.cshtml" />
+    <Content Include="Views\PartyMembers\VoteOnActivites.cshtml" />
+    <Content Include="Views\PartyMembers\PostVote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -343,11 +341,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910231734491_update.resx">
-      <DependentUpon>201910231734491_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910231750484_update2.resx">
-      <DependentUpon>201910231750484_update2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910241729228_update.resx">
+      <DependentUpon>201910241729228_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,7 @@ namespace BudgetSquad.Models
     {
         [Key]
         public int MadeActivitesId { get; set; }
+
         [Display(Name ="What Kind of Activity is this?")]
         public string TypeOfActivity { get; set; }
         
