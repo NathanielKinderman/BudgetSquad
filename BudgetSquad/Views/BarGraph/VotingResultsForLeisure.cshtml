@@ -1,0 +1,42 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <script type="text/javascript">
+ window.onload = function () {
+   var chart = new CanvasJS.Chart("chartContainer",
+   {
+     title:{
+       text: "Votes for Leisure Activities",
+       fontSize: 20
+     },
+     data: [
+      {
+        type: "column",
+        indexLabel: "{x}, {y}",
+        indexLabelPlacement: "outside",
+        indexLabelOrientation: "horizontal",
+        dataPoints: [
+            { label: "Spa/Health", y: @ViewBag.spa  },
+            { label: "Museum", y: @ViewBag.museum },
+            { label: "Outdoor Activities", y: @ViewBag.outdoor },
+            { label: "Other", y: @ViewBag.other },
+        ]
+      }
+     ]
+   });
+   chart.render();
+ }
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</head>
+
+<body>
+    <div id="chartContainer" style="height: 300px; width: 100%;">
+    </div>
+</body>
+
+</html>
+

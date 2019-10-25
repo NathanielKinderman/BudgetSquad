@@ -319,6 +319,9 @@
     <Content Include="Views\BarGraph\ActivitiesBreakdown.cshtml" />
     <Content Include="Views\PartyMembers\VoteOnActivites.cshtml" />
     <Content Include="Views\PartyMembers\PostVote.cshtml" />
+    <Content Include="Views\BarGraph\VotingResultsForEntertainment.cshtml" />
+    <Content Include="Views\BarGraph\VotingResultsForFoodDrink.cshtml" />
+    <Content Include="Views\BarGraph\VotingResultsForLeisure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

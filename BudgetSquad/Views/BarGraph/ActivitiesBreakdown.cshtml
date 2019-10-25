@@ -15,9 +15,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		yValueFormatString: "##0.00\"%\"",
 		indexLabel: "{label} {y}",
 		dataPoints: [
-			{y: 79.45, label: "@ViewBag.TypeOfActivity"},
-			{y: 7.31, label: "Bing"},
-			{y: 7.06, label: "Baidu"},
+			{y: @ViewBag.foodDrink, label: "Food/Drink"},
+			{y: @ViewBag.entertainment, label: "Entertainment"},
+			{y: @ViewBag.leisure, label: "Leisure"},
 			
 		]
 	}]
