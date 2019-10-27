@@ -17,8 +17,11 @@ namespace BudgetSquad.Controllers
         public ActionResult Index(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
+            var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
+            var foodDrink = typeOfActivity.Where(f => f.Contains("Food/Drink")).ToList();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
+            //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
             ViewBag.nameOfActivity = nameOfActivity;
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
             return View();
