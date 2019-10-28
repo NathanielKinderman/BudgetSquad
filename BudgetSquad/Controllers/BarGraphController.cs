@@ -14,7 +14,7 @@ namespace BudgetSquad.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
         // GET: Home
-        public ActionResult Index(int? id)
+        public ActionResult FoodBreakDown(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
             var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
@@ -64,6 +64,43 @@ namespace BudgetSquad.Controllers
 
         }
 
+
+        public ActionResult EntertainmentBreakDown(int? id)
+        {
+            MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
+            var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
+            var entertainment = typeOfActivity.Where(f => f.Contains("Entertainment")).ToList();
+            string nameOfActivity = currentUser.NameOfActivity;
+            double estimatedCost = currentUser.EstimatedCostOfActivity;
+            double minCost = currentUser.EstimatedMinimumCostOfActivity;
+            //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
+            ViewBag.typeofActivity = JsonConvert.SerializeObject(entertainment);
+            ViewBag.nameOfActivity = nameOfActivity;
+            ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
+            ViewBag.minCost = JsonConvert.SerializeObject(minCost);
+            return View();
+
+
+        }
+
+        public ActionResult LeisureBreakDown(int? id)
+        {
+            MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
+            var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
+            var leisure = typeOfActivity.Where(f => f.Contains("Leisure")).ToList();
+            string nameOfActivity = currentUser.NameOfActivity;
+            double estimatedCost = currentUser.EstimatedCostOfActivity;
+            double minCost = currentUser.EstimatedMinimumCostOfActivity;
+            //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
+            ViewBag.typeofActivity = JsonConvert.SerializeObject(leisure);
+            ViewBag.nameOfActivity = nameOfActivity;
+            ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
+            ViewBag.minCost = JsonConvert.SerializeObject(minCost);
+            return View();
+
+
+
+        }
         public ActionResult ActivitiesBreakdown(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();

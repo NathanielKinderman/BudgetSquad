@@ -37,11 +37,15 @@
             @Html.DisplayNameFor(model => model.EstimatedMinimumCostOfActivity)
         </th>
         <th>
+            @ViewBag.MinBudgetTitle
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.EstimatedCostOfActivity)
         </th>
         <th>
             @ViewBag.BudgetTitle
         </th>
+        
         <th></th>
     </tr>
 
@@ -51,11 +55,11 @@
         @Html.DisplayFor(modelItem => item.EventsName)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.NameOfActivity)
-    </td>
-    <td>
         @Html.DisplayFor(modelItem => item.TypeOfActivity)
     </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NameOfActivity)
+    </td>    
     <td>
         @Html.DisplayFor(modelItem => item.LocationOfActivity)
     </td>
@@ -72,11 +76,15 @@
         @Html.DisplayFor(modelItem => item.EstimatedMinimumCostOfActivity)
     </td>
     <td>
+        @ViewBag.minBudget
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.EstimatedCostOfActivity)
     </td>
     <td>
         @ViewBag.Budget
     </td>
+
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.MadeActivitesId }) |
         @Html.ActionLink("Details", "Details", new { id = item.MadeActivitesId }) |

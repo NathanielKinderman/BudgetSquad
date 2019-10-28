@@ -32,9 +32,12 @@ namespace BudgetSquad.Controllers
 
             var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
 
-
-            ViewBag.BudgetTitle = "The Events Budget";
-            ViewBag.Budget = "nate"; 
+            var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
+            var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
+            ViewBag.BudgetTitle = "The Events Max Budget";
+            ViewBag.MinBudgetTitle = "The Events Min Budget";
+            ViewBag.Budget = budgetShown;
+            ViewBag.minBudget = minBudget;
 
             //ViewBag.Budget = createEvent.TheMaxBudgetOfEvent;
             return View(matchingEventToActivity);

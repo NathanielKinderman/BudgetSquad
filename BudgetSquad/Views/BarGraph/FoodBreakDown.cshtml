@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript">
+ window.onload = function () {
+   var chart = new CanvasJS.Chart("chartContainer",
+   {
+     title:{
+       text: "Estimated Cost Food and Drink",
+       fontSize: 20
+     },
+     data: [
+      {
+        type: "column",
+        indexLabel: "{x}, {y}",
+        indexLabelPlacement: "outside",
+        indexLabelOrientation: "horizontal",
+        dataPoints: [
+            { label: "Tacos", y: @ViewBag.estimatedCost  },
+            { label: "Sushi", y: 100  },
+            { label: "Olive Garden", y: 50 }
+        ]
+         },
+         { //dataSeries - second quarter
+
+      type: "column",
+      name: "Second Quarter",                
+      dataPoints: [
+      { label: "Tacos", y: @ViewBag.minCost },
+      { label: "Sushi", y: 30 },
+      { label: "Olive Garden", y: 20 }                               
+      
+      ]
+    }
+     ]
+   });
+   chart.render();
+ }
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 300px; width: 100%;">
+    </div>
+</body>
+</html>

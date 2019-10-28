@@ -6,7 +6,7 @@
    var chart = new CanvasJS.Chart("chartContainer",
    {
      title:{
-       text: "Estimated Cost",
+       text: "Estimated Cost Entertainment",
        fontSize: 20
      },
      data: [
@@ -16,11 +16,20 @@
         indexLabelPlacement: "outside",
         indexLabelOrientation: "horizontal",
         dataPoints: [
-            { label: "@ViewBag.nameOfActivity", y: @ViewBag.estimatedCost  },
-            { label: "@ViewBag.nameOfActivity", y: @ViewBag.minCost  },
-            { label: "@ViewBag.nameOfActivity", y: @ViewBag.estimatedCost }
+            
+            { label: "Spa", y: 300 }
         ]
-      }
+         },
+         { //dataSeries - second quarter
+
+      type: "column",
+      name: "Estimated Min Cost",
+      dataPoints: [
+      
+      { label: "Spa", y: 150 }
+
+      ]
+    }
      ]
    });
    chart.render();
