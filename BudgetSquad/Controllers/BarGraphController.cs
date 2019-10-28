@@ -21,11 +21,46 @@ namespace BudgetSquad.Controllers
             var foodDrink = typeOfActivity.Where(f => f.Contains("Food/Drink")).ToList();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
+            double minCost = currentUser.EstimatedMinimumCostOfActivity;
             //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
+            ViewBag.typeofActivity = JsonConvert.SerializeObject(foodDrink);
             ViewBag.nameOfActivity = nameOfActivity;
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
+            ViewBag.minCost = JsonConvert.SerializeObject(minCost);
             return View();
 
+            ////this matches the PlannerId of the current user
+            //MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
+
+            ////declaring local variables
+            //double estimatedCost = currentUser.EstimatedCostOfActivity;
+            //var typeOfActivity = currentUser.TypeOfActivity;
+
+            ////query for typeofActivity
+            //var foodDrink = context.MadeActivites.Where(x => x.TypeOfActivity.Contains("Food/Drink")).Distinct();
+            //var leisure = context.MadeActivites.Where(x => x.TypeOfActivity.Contains("Leisure")).First();
+            //var entertainment = context.MadeActivites.Where(x => x.TypeOfActivity.Contains("Entertainment")).First();
+
+
+            ////this sends the variables to the view
+            //ViewBag.foodDrink =foodDrink;
+            //ViewBag.leisure = JsonConvert.SerializeObject(leisure);
+            //ViewBag.entertainment = JsonConvert.SerializeObject(entertainment);
+            //ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
+            //return View();
+
+            ////this matches the PlannerId of the current user
+            //MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
+            ////declaring variables
+            //double estimatedCost = currentUser.EstimatedCostOfActivity;
+            //var typeOfActivity = currentUser.TypeOfActivity;
+            //var foodDrinkActivity = "Food/Drink";
+            ////query for typeOfActivity
+            //var foodDrink = context.MadeActivites.Where(x => typeOfActivity.Contains("Food/Drink")).Select(x => foodDrinkActivity);
+            ////this sends the variables to the view
+            //ViewBag.foodDrink = JsonConvert.SerializeObject(foodDrink);
+            //ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
+            //return View();
 
         }
 
