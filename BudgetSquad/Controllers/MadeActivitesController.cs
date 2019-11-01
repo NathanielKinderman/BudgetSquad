@@ -83,9 +83,9 @@ namespace BudgetSquad.Controllers
             {
                 //db.MadeActivites.Add(madeActivites);
                 //db.SaveChanges();
-                var madeActivitiesId = db.MadeActivites.Select(x => x.PlannerId).FirstOrDefault();
+                var plannerId = db.Planners.Select(x => x.Id).FirstOrDefault();
                 //int createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
-                madeActivites.PlannerId = madeActivitiesId;
+                madeActivites.PlannerId = plannerId;
                 madeActivites.Country = "USA";
                 var addressConvert = ConvertAddressToGoogleFormat(madeActivites);
                 var geolocateInfo = GeoLocate(addressConvert);

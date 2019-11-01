@@ -1,8 +1,40 @@
-﻿
-@{
-    ViewBag.Title = "EventBrite";
-    Layout = "~/Views/Shared/_PartyMemberLayout.cshtml";
-}
+﻿<div>
+<script>
+    $(document).ready(GetEvents());
 
-<h2>EventBrite</h2>
+(function ($) {
+    function GetEvents() {
+
+        $.ajax({
+            url: ' https://eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km',
+            dataType: 'json',
+            type: 'get',
+
+            success: function (data) {
+                document.getElementById("table-body").innerHTML = "";
+                document.getElementById("events-body").innerHTML = "";
+                console.log(data);
+                let events = data.event;
+                for (let el in events) {
+                    $("#MyTable").append(
+                        `<tr>
+                            <td> ${events[el].name.text} </td>
+                            <td> ${events[el].description.text} </td>
+                            <td> ${events[el].url.text} </td>
+                            <td><a href = ${data[el].Url}> ${data[el].Url}</a></td>
+
+                        </tr>`)
+                }
+
+
+            },
+            //error: {
+            //    console.log("error")
+            //},
+
+        });
+    }
+})(JQuery);
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</div>
