@@ -23,6 +23,8 @@ $(document).ready(GetEvents());
             type: 'get',
 
             success: function (data) {
+                document.getElementById("table-body").innerHTML = "";
+                document.getElementById("events-body").innerHTML = "";
                 console.log(data);
                 let events = data.event;
                 for (let el in events) {
@@ -37,9 +39,9 @@ $(document).ready(GetEvents());
 
 
             },
-            //error: {
-            //    console.log("error")
-            //},
+            error: {
+                console.log("error")
+            },
 
         });
     }

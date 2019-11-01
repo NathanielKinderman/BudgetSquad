@@ -1,8 +1,8 @@
 ﻿
-@model BudgetingSquad.Models.GeocodeInfo
+@*@model BudgetingSquad.Models.GeoCode
 @{
     ViewBag.Title = "Map";
-}
+}*@
 
 <h2>Map</h2>
 <style>
@@ -23,7 +23,7 @@
             //var location = { lat: @*@Html.DisplayFor(model => model.Latitude), lng: @Html.DisplayFor(model => model.Address.Longitude) };*@
             
             map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 43.0389, lng: -87.9065 },
+                center: marker,
                 zoom: 8
             });
             
@@ -35,8 +35,8 @@
                 })
                
             }
-            addMarker({ lat: 43.034271, lng: -87.911919 });
-            addMarker({ lat: 43.0450, lng: -87.9168 });
+            addMarker(coords);
+            //addMarker({ lat: 43.0450, lng: -87.9168 });
         }
         
     </script>

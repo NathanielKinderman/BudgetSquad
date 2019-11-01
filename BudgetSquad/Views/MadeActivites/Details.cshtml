@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LocationOfActivity)
+            @Html.DisplayNameFor(model => model.StateAbbreviation)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LocationOfActivity)
+            @Html.DisplayFor(model => model.StateAbbreviation)
         </dd>
 
         <dt>
@@ -59,11 +59,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.State)
+            @Html.DisplayNameFor(model => model.StateAbbreviation)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.State)
+            @Html.DisplayFor(model => model.StateAbbreviation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
         </dd>
 
         <dt>
@@ -110,6 +118,7 @@
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ |
     @Html.ActionLink("Back to List", "Index")|
+    @Html.ActionLink("Budget Balance", "AddingCost", "BarGraph", new { id = Model.PlannerId }, null)|
     @Html.ActionLink("See Votes on Entertainment", "VotingResultsForEntertainment", "BarGraph", new { id = Model.PlannerId }, null)|
     @Html.ActionLink("See Votes on Food/Drink", "VotingResultsForFoodDrink", "BarGraph", new { id = Model.PlannerId }, null)|
     @Html.ActionLink("See Votes on Leisure", "VotingResultsForLeisure", "BarGraph", new { id = Model.PlannerId }, null)|

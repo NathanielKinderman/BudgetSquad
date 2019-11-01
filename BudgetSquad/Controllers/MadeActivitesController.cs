@@ -66,8 +66,8 @@ namespace BudgetSquad.Controllers
         // GET: MadeActivites/Create
         public ActionResult Create()
         {
-            var ActivityList = new List<string>() { "Food/Drink", "Entertainment", "Leisure" };
-            ViewBag.ActivityList = ActivityList;
+            //var ActivityList = new List<string>() { "Food/Drink", "Entertainment", "Leisure" };
+            //ViewBag.ActivityList = ActivityList;
 
             return View();
         }
@@ -83,8 +83,15 @@ namespace BudgetSquad.Controllers
             {
                 //db.MadeActivites.Add(madeActivites);
                 //db.SaveChanges();
-                int createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
-                madeActivites.PlannerId = createEventId;
+                var madeActivitiesId = db.MadeActivites.Select(x => x.PlannerId).FirstOrDefault();
+                //int createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
+                madeActivites.PlannerId = madeActivitiesId;
+                madeActivites.Country = "USA";
+                var addressConvert = ConvertAddressToGoogleFormat(madeActivites);
+                var geolocateInfo = GeoLocate(addressConvert);
+                madeActivites.Latitude = geolocateInfo.results[0].geometry.location.lat;
+                madeActivites.Longitude = geolocateInfo.results[0].geometry.location.lng;
+
                 db.MadeActivites.Add(madeActivites);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -94,7 +101,53 @@ namespace BudgetSquad.Controllers
             return View(madeActivites);
         }
 
+        public GeoCode GeoLocate(string address)
+        {
+            var apiKey = Keys.APIKey;
+            var requestUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey;
+            var result = new WebClient().DownloadString(requestUrl);
+            GeoCode geocodeInfo = JsonConvert.DeserializeObject<GeoCode>(result);
+            return geocodeInfo;
+        }
+        
+        public ActionResult Map(int? id)
+        {
+            var currentUser = db.MadeActivites.Where(c => c.PlannerId == id).FirstOrDefault();
+            var lat = currentUser.Latitude;
+            var lng = currentUser.Longitude;
+            var results = lat + lng;
+            
+            return View();
+        }
+        public string ConvertAddressToGoogleFormat(MadeActivites madeActivites)
+        {
+            string googleFormatAddress = AddPluses(madeActivites.StreetAddress) + "," + AddPluses(madeActivites.City) + "," + AddPluses(madeActivites.StateAbbreviation) + "," + AddPluses(madeActivites.ZipCode) + "," + AddPluses(madeActivites.Country);
+            return googleFormatAddress;
+        }
 
+        public string AddPluses(string str)
+        {
+            str = str.Replace(" ", "+");
+            return str;
+        }
+
+
+        public ActionResult Map()
+        {
+            return View();
+
+        }
+        public ActionResult AddingCost(MadeActivites madeActivites)
+        {
+            var madeActivitesMaxCost = db.MadeActivites.Select(a => a.EstimatedCostOfActivity).FirstOrDefault();
+            var madeActivitesMinCost = db.MadeActivites.Select(m => m.EstimatedMinimumCostOfActivity).FirstOrDefault();
+            madeActivites.EstimatedCostOfActivity = madeActivitesMaxCost;
+            madeActivites.EstimatedMinimumCostOfActivity = madeActivitesMinCost;
+            ViewBag.MaxCost = madeActivitesMaxCost;
+            ViewBag.MinCost = madeActivitesMinCost;
+
+            return View();
+        }
         public ActivitesInfo AddDataPoint(MadeActivites madeActivites)
         {
             ActivitesInfo activitesInfo = new ActivitesInfo();
@@ -113,28 +166,11 @@ namespace BudgetSquad.Controllers
 
         }
 
-
-
-        public string ConvertAddressToGoogleFormat(Address address)
-        {
-            string googleFormatAddress = address.StreetAddress + "," + address.City + "," + address.State + "," + address.ZipCode + "," + address.Country;
-            return googleFormatAddress;
-        }
-
-        public GeocodeInfo GeoLocate(string address)
+        public ActionResult EventBrite()
         {
 
-            var requestUrl = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key=AIzaSyCgxbc-4DbwDz3-fH-pSijZdrbh6JL-i4E";
-            var result = new WebClient().DownloadString(requestUrl);
-            GeocodeInfo geocodeInfo = JsonConvert.DeserializeObject<GeocodeInfo>(result);
-            return geocodeInfo;
-        }
-
-        public ActionResult Map()
-        {
             return View();
-
-        }
+        }               
 
 
 

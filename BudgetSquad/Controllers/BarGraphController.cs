@@ -17,13 +17,13 @@ namespace BudgetSquad.Controllers
         public ActionResult FoodBreakDown(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
-            var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
-            var foodDrink = typeOfActivity.Where(f => f.Contains("Food/Drink")).ToList();
+            //var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
+            //var foodDrink = typeOfActivity.Where(f => f.Contains("Food/Drink")).ToList();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
             double minCost = currentUser.EstimatedMinimumCostOfActivity;
             //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
-            ViewBag.typeofActivity = JsonConvert.SerializeObject(foodDrink);
+            //ViewBag.typeofActivity = JsonConvert.SerializeObject(foodDrink);
             ViewBag.nameOfActivity = nameOfActivity;
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
             ViewBag.minCost = JsonConvert.SerializeObject(minCost);
@@ -64,17 +64,27 @@ namespace BudgetSquad.Controllers
 
         }
 
+        public ActionResult AddingCost(CreateEvent createEvent)
+        {
+            var EventsMaxCost = context.CreateEvents.Select(a => a.TheMaxBudgetOfEvent).FirstOrDefault();
+            var EventsMinCost = context.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
+            createEvent.TheMaxBudgetOfEvent = EventsMaxCost;
+            createEvent.TheMinBudgetOfEvent = EventsMinCost;
+            ViewBag.MaxCost = EventsMaxCost;
+            ViewBag.MinCost = EventsMinCost;
 
+            return View();
+        }
         public ActionResult EntertainmentBreakDown(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
-            var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
-            var entertainment = typeOfActivity.Where(f => f.Contains("Entertainment")).ToList();
+            //var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
+            //var entertainment = typeOfActivity.Where(f => f.Contains("Entertainment")).ToList();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
             double minCost = currentUser.EstimatedMinimumCostOfActivity;
             //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
-            ViewBag.typeofActivity = JsonConvert.SerializeObject(entertainment);
+            //ViewBag.typeofActivity = JsonConvert.SerializeObject(entertainment);
             ViewBag.nameOfActivity = nameOfActivity;
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
             ViewBag.minCost = JsonConvert.SerializeObject(minCost);
@@ -86,13 +96,13 @@ namespace BudgetSquad.Controllers
         public ActionResult LeisureBreakDown(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
-            var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
-            var leisure = typeOfActivity.Where(f => f.Contains("Leisure")).ToList();
+            //var typeOfActivity = context.MadeActivites.Select(t => t.TypeOfActivity).ToList();
+            //var leisure = typeOfActivity.Where(f => f.Contains("Leisure")).ToList();
             string nameOfActivity = currentUser.NameOfActivity;
             double estimatedCost = currentUser.EstimatedCostOfActivity;
             double minCost = currentUser.EstimatedMinimumCostOfActivity;
             //var typeOfActivity = currentUser.Select(d => d.Contains("Food/Drink")).ToLIst();
-            ViewBag.typeofActivity = JsonConvert.SerializeObject(leisure);
+            //ViewBag.typeofActivity = JsonConvert.SerializeObject(leisure);
             ViewBag.nameOfActivity = nameOfActivity;
             ViewBag.estimatedCost = JsonConvert.SerializeObject(estimatedCost);
             ViewBag.minCost = JsonConvert.SerializeObject(minCost);
@@ -104,19 +114,19 @@ namespace BudgetSquad.Controllers
         public ActionResult ActivitiesBreakdown(int? id)
         {
             MadeActivites currentUser = context.MadeActivites.Where(x => x.PlannerId == id).FirstOrDefault();
-            var typeofActivity = context.MadeActivites.Select(d => d.TypeOfActivity).ToList();
+            //var typeofActivity = context.MadeActivites.Select(d => d.TypeOfActivity).ToList();
 
-            var foodDrink = typeofActivity.Where(f => f.Contains("Food/Drink")).ToList();
-            int foodDrinkCount = foodDrink.Count();
-            ViewBag.foodDrink = JsonConvert.SerializeObject(foodDrinkCount);
+           // var foodDrink = typeofActivity.Where(f => f.Contains("Food/Drink")).ToList();
+            //int foodDrinkCount = foodDrink.Count();
+            //ViewBag.foodDrink = JsonConvert.SerializeObject(foodDrinkCount);
 
-            var entertainment = typeofActivity.Where(e => e.Contains("Entertainment")).ToList();
-            int entertainmentCount = entertainment.Count();
-            ViewBag.entertainment = JsonConvert.SerializeObject(entertainmentCount);
+            //var entertainment = typeofActivity.Where(e => e.Contains("Entertainment")).ToList();
+            //int entertainmentCount = entertainment.Count();
+            //ViewBag.entertainment = JsonConvert.SerializeObject(entertainmentCount);
 
-            var leisure = typeofActivity.Where(l => l.Contains("Leisure")).ToList();
-            int leisureCount = leisure.Count();
-            ViewBag.leisure = JsonConvert.SerializeObject(leisureCount);
+            //var leisure = typeofActivity.Where(l => l.Contains("Leisure")).ToList();
+            //int leisureCount = leisure.Count();
+            //ViewBag.leisure = JsonConvert.SerializeObject(leisureCount);
             
             return View();
 

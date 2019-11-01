@@ -17,18 +17,18 @@ namespace BudgetSquad.Controllers
             //var isCheckedIn = db.PartyMembers.Count(currentUser.IsGoingToEvent)
             //    var checkInStatus = "true";
             //    var list = db.PartyMembers.Where(x => checkInStatus.Contains("true")).ToList();
-                return View();
+            return View();
         }
-        //public ActionResult AttendingPartyMembers()
-        //{
-        //    //List<PartyMember> members = new List<PartyMember>();
+        public ActionResult AttendingPartyMembers()
+        {
+            List<PartyMember> members = new List<PartyMember>();
 
-        //    List<PartyMember> partyMemberList = db.PartyMembers.Where(x => x.IsGoingToEvent == true).OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
+            var partyMemberList = db.PartyMembers.Where(x => x.IsGoingToEvent == true).OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
 
 
-        //    ViewBag.partyList = partyMemberList;
-        //    return View(partyMemberList);
-        //}
-
+            ViewBag.partyList = partyMemberList;
+            return View(partyMemberList);
+         }
     }
+
 }

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript">
+ window.onload = function () {
+   var chart = new CanvasJS.Chart("chartContainer",
+   {
+     title:{
+       text: "Estimated Cost Entertainment",
+       fontSize: 20
+     },
+     data: [
+      {
+        type: "column",
+        indexLabel: "{x}, {y}",
+        indexLabelPlacement: "outside",
+        indexLabelOrientation: "horizontal",
+        dataPoints: [
+            { label: "Total Max Cost For Activities", y:  1 },            
+            { label: "Max Budget", y:@ViewBag.MaxCost }
+        ]
+         },
+         { //dataSeries - second quarter
+
+      type: "column",
+      name: "Estimated Min Cost",
+      dataPoints: [
+      { label: "Total Min Cost For Activites", y: 1 },      
+      { label: "Max and Min Budget", y:@ViewBag.MinCost }
+
+      ]
+    }
+     ]
+   });
+   chart.render();
+ }
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 300px; width: 100%;">
+    </div>
+</body>
+</html>

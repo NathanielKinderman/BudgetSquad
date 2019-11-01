@@ -199,14 +199,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910241729228_update.cs" />
-    <Compile Include="Migrations\201910241729228_update.Designer.cs">
-      <DependentUpon>201910241729228_update.cs</DependentUpon>
+    <Compile Include="Migrations\201910282013363_update.cs" />
+    <Compile Include="Migrations\201910282013363_update.Designer.cs">
+      <DependentUpon>201910282013363_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011838549_update1.cs" />
+    <Compile Include="Migrations\201911011838549_update1.Designer.cs">
+      <DependentUpon>201911011838549_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011855452_update12312312.cs" />
+    <Compile Include="Migrations\201911011855452_update12312312.Designer.cs">
+      <DependentUpon>201911011855452_update12312312.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivitesInfo.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\CreateEvent.cs" />
     <Compile Include="Controllers\CreateEventsController.cs" />
@@ -215,7 +222,8 @@
     <Compile Include="Models\EmailMessage.cs" />
     <Compile Include="Models\EventsViewModel\ManageEventsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\GeocodeInfo.cs" />
+    <Compile Include="Models\Geocode.cs" />
+    <Compile Include="Models\Keys.cs" />
     <Compile Include="Models\MadeActivites.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PartyMember.cs" />
@@ -324,6 +332,8 @@
     <Content Include="Views\BarGraph\VotingResultsForLeisure.cshtml" />
     <Content Include="Views\BarGraph\EntertainmentBreakDown.cshtml" />
     <Content Include="Views\BarGraph\LeisureBreakDown.cshtml" />
+    <Content Include="Views\BarGraph\AddingCost.cshtml" />
+    <Content Include="Views\MadeActivites\EventBrite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -346,8 +356,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910241729228_update.resx">
-      <DependentUpon>201910241729228_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910282013363_update.resx">
+      <DependentUpon>201910282013363_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011838549_update1.resx">
+      <DependentUpon>201911011838549_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011855452_update12312312.resx">
+      <DependentUpon>201911011855452_update12312312.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

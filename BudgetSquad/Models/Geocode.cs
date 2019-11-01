@@ -8,8 +8,8 @@ namespace BudgetingSquad.Models
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public class GeocodeInfo
-    {
+    //public class Geocode
+    //{
         public class AddressComponent
         {
             public string long_name { get; set; }
@@ -81,5 +81,5 @@ namespace BudgetingSquad.Models
             public List<Result> results { get; set; }
             public string status { get; set; }
         }
-    }
+    // }
 }

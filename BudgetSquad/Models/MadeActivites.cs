@@ -13,8 +13,8 @@ namespace BudgetSquad.Models
         [Key]
         public int MadeActivitesId { get; set; }
 
-        [Display(Name ="What Kind of Activity is this?")]
-        public string TypeOfActivity { get; set; }
+        //[Display(Name ="What Kind of Activity is this?")]
+        //public string TypeOfActivity { get; set; }
         
         [Required]
         [Display(Name = "What is the Name of the Event that is Activity is for?")]
@@ -22,15 +22,17 @@ namespace BudgetSquad.Models
         [Display(Name = "Whats the Name of Activity?")]
         public string NameOfActivity { get; set; }
         [Display(Name = "What is the Address of this Activity?")]
-        public string LocationOfActivity { get; set; }
-        [Display(Name = "What Time is the Activity happening?")]
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
+        public string StreetAddress { get; set; }        
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         [Display(Name = "City")]
         public string City { get; set; }
-
         [Display(Name = "State")]
-        public string State { get; set; }
+        public string StateAbbreviation { get; set; }
+        [Display(Name ="Zipcode")]
+        public string ZipCode { get; set; }
+        public string Country { get; set; }
+        [Display(Name = "What Time is the Activity happening?")]
         public string TimeOfActivity { get; set; }
         [Display(Name = "How many people do you plan on going to this event?")]
         public string HowManyMembersInvolved { get; set; }
@@ -43,7 +45,7 @@ namespace BudgetSquad.Models
 
         [ForeignKey("Planner")]
         [Display(Name = "PlannerId")]
-        public int PlannerId { get; set; }
+        public int? PlannerId { get; set; }
         public Planner Planner { get; set; }
     }
 }

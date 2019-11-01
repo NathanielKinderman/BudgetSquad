@@ -8,27 +8,30 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")|
-    @Html.ActionLink("Check EventBrite","Create")
+    @Html.ActionLink("Check EventBrite","EventBrite")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.EventsName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TypeOfActivity)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.NameOfActivity)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LocationOfActivity)
+            @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
+            @Html.DisplayNameFor(model => model.StateAbbreviation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HowManyMembersInvolved)
@@ -45,7 +48,7 @@
         <th>
             @ViewBag.BudgetTitle
         </th>
-        
+
         <th></th>
     </tr>
 
@@ -54,20 +57,23 @@
     <td>
         @Html.DisplayFor(modelItem => item.EventsName)
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.TypeOfActivity)
-    </td>
+    </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.NameOfActivity)
-    </td>    
+    </td>
     <td>
-        @Html.DisplayFor(modelItem => item.LocationOfActivity)
+        @Html.DisplayFor(modelItem => item.StreetAddress)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.City)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.State)
+        @Html.DisplayFor(modelItem => item.StateAbbreviation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ZipCode)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.HowManyMembersInvolved)
@@ -76,6 +82,7 @@
         @Html.DisplayFor(modelItem => item.EstimatedMinimumCostOfActivity)
     </td>
     <td>
+        <a href="~/Views/MadeActivites/Index.cshtml">~/Views/MadeActivites/Index.cshtml</a>
         @ViewBag.minBudget
     </td>
     <td>
