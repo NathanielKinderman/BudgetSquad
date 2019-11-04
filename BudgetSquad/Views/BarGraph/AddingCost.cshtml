@@ -16,7 +16,7 @@
         indexLabelPlacement: "outside",
         indexLabelOrientation: "horizontal",
         dataPoints: [
-            { label: "Total Max Cost For Activities", y:  1 },            
+            { label: "Total Max Cost For Activities", y:@ViewBag.TotalMaxCost},            
             { label: "Max Budget", y:@ViewBag.MaxCost }
         ]
          },
@@ -25,7 +25,7 @@
       type: "column",
       name: "Estimated Min Cost",
       dataPoints: [
-      { label: "Total Min Cost For Activites", y: 1 },      
+      { label: "Total Min Cost For Activites", y:@ViewBag.TotalMinCost},      
       { label: "Max and Min Budget", y:@ViewBag.MinCost }
 
       ]

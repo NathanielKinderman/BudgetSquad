@@ -1,18 +1,20 @@
-﻿<div>
-<script>
-    $(document).ready(GetEvents());
+﻿<table id="MyTable">
+</table>
 
-(function ($) {
-    function GetEvents() {
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    GetEvents();
+  function GetEvents() {
 
         $.ajax({
-            url: ' https://eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km',
+            url: 'https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venuehttps://eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km',
             dataType: 'json',
             type: 'get',
 
             success: function (data) {
-                document.getElementById("table-body").innerHTML = "";
-                document.getElementById("events-body").innerHTML = "";
+                document.getElementById("MyTable").innerHTML = "";
+                document.getElementById("MyTable").innerHTML = "";
                 console.log(data);
                 let events = data.event;
                 for (let el in events) {
@@ -33,8 +35,5 @@
             //},
 
         });
-    }
-})(JQuery);
+  }
 </script>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-</div>

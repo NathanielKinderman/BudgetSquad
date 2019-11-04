@@ -66,6 +66,14 @@ namespace BudgetSquad.Controllers
 
         public ActionResult AddingCost(CreateEvent createEvent)
         {
+            var totalMaxCostOfActivities = context.MadeActivites.Select(c => c.EstimatedCostOfActivity).ToList();
+            var sum1 = totalMaxCostOfActivities.Sum();
+            ViewBag.TotalMaxCost = sum1;
+
+            var totalMinCostOfActivities = context.MadeActivites.Select(c => c.EstimatedMinimumCostOfActivity).ToList();
+            var sum2 = totalMinCostOfActivities.Sum();
+            ViewBag.TotalMinCost = sum2;
+
             var EventsMaxCost = context.CreateEvents.Select(a => a.TheMaxBudgetOfEvent).FirstOrDefault();
             var EventsMinCost = context.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
             createEvent.TheMaxBudgetOfEvent = EventsMaxCost;

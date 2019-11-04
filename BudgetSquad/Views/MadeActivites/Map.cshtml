@@ -1,4 +1,4 @@
-﻿
+﻿@model BudgetSquad.Models.MadeActivites
 
 <h2>Map</h2>
 <style>
@@ -10,33 +10,40 @@
     }
 </style>
 
-<div class="row">
+
     <div id="map"></div>
+
     <script>
         var map;
         function initMap() {
-            var location = { lat:@Html.DisplayFor(model=>model.MadeActivites.Latitude), lng:@Html.DisplayFor(model=>model.MadeActivites.Longitude)};
+            
+            var location = { lat:@ViewBag.Lat[1], lng:@ViewBag.Lng[1]};
+           
             map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 43.0450, lng: -87.9168 },
+                center: location,
                 zoom: 8
             });
             var marker = new google.maps.Marker({
-                position: coords,
+                position: location,
                 map: map
-            })
+            });
+            console.log('marker', marker);
+              @for (int i = 0; i < ViewBag.Lat.Count; i++) {
+                Html.Raw("addMarker("+ ViewBag.Lat[i] +", "+ViewBag.Lng[i]+");");
+            }
             //now add markers
             //addMarker({lat:43.0228854,lng:-87.906498});
-            //function addMarker(coords){
-            //    var marker = new google.maps.Marker({
-            //    position: coords,
-            //    map: map
-            //})
-            //}
-            
+
         }
-        
+        function addMarker(location){
+                var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            })
+            }
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgxbc-4DbwDz3-fH-pSijZdrbh6JL-i4E&callback=initMap"
             async defer></script>
-</div>
+
 

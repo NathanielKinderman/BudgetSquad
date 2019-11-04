@@ -126,7 +126,7 @@
     @Html.ActionLink("See Costs for Food/Drink", "FoodBreakDown", "BarGraph", new { id = Model.PlannerId }, null)|
     @Html.ActionLink("See Costs for Entertainment", "EntertainmentBreakDown", "BarGraph", new { id = Model.PlannerId }, null)|
     @Html.ActionLink("See Costs for Leisure", "LeisureBreakDown", "BarGraph", new { id = Model.PlannerId }, null)|
-    @Html.ActionLink("See Map", "Map", "MadeActivites")|
+    @Html.ActionLink("See Map", "Map", "MadeActivites", new { id = Model.PlannerId },null)|
     @Html.ActionLink("Send Email to Party Memebers", "SendEmail", "MadeActivites")|
     @Html.ActionLink("See whos Attending", "AttendingPartyMembers", "CheckingIn")
 </p>

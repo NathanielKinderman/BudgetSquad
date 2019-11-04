@@ -24,6 +24,12 @@ namespace BudgetSquad.Controllers
         // GET: MadeActivites
         public ActionResult Index()
         {
+            var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
+            var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();           
+            ViewBag.BudgetTitle = "The Events Max Budget";
+            ViewBag.MinBudgetTitle = "The Events Min Budget";
+            ViewBag.Budget = budgetShown;
+            ViewBag.minBudget = minBudget;
             return View(db.MadeActivites.ToList());
 
             ////this finds the PlannerId on the MadeActivities table
@@ -126,16 +132,19 @@ namespace BudgetSquad.Controllers
             GeoCode geocodeInfo = JsonConvert.DeserializeObject<GeoCode>(result);
             return geocodeInfo;
         }
-        
-        //public ActionResult Map(int? id)
-        //{
-        //    var currentUser = db.MadeActivites.Where(c => c.PlannerId == id).FirstOrDefault();
-        //    var lat = currentUser.Latitude;
-        //    var lng = currentUser.Longitude;
-        //    var results = lat + lng;
-            
-        //    return View();
-        //}
+
+        public ActionResult Map(int? id)
+        {
+            var lat = db.MadeActivites.Where(c => c.PlannerId == id).Select(c => c.Latitude).ToList();
+            var lng = db.MadeActivites.Where(c => c.PlannerId == id).Select(c => c.Longitude).ToList();
+
+
+            //var lng = currentUser.Longitude;
+            //var results = lat + lng;
+            ViewBag.Lat = lat;
+            ViewBag.Lng = lng;
+            return View();
+        }
         public string ConvertAddressToGoogleFormat(MadeActivites madeActivites)
         {
             string googleFormatAddress = AddPluses(madeActivites.StreetAddress) + "," + AddPluses(madeActivites.City) + "," + AddPluses(madeActivites.StateAbbreviation) + "," + AddPluses(madeActivites.ZipCode) + "," + AddPluses(madeActivites.Country);
@@ -149,13 +158,16 @@ namespace BudgetSquad.Controllers
         }
 
 
-        public ActionResult Map()
-        {
-            return View();
+        //public ActionResult Map()
+        //{
 
-        }
+        //    return View();
+
+        //}
         public ActionResult AddingCost(MadeActivites madeActivites)
         {
+            
+
             var madeActivitesMaxCost = db.MadeActivites.Select(a => a.EstimatedCostOfActivity).FirstOrDefault();
             var madeActivitesMinCost = db.MadeActivites.Select(m => m.EstimatedMinimumCostOfActivity).FirstOrDefault();
             madeActivites.EstimatedCostOfActivity = madeActivitesMaxCost;
@@ -185,7 +197,7 @@ namespace BudgetSquad.Controllers
 
         public ActionResult EventBrite()
         {
-
+            
             return View();
         }               
 
