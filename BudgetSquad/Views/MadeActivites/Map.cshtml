@@ -1,8 +1,4 @@
 ﻿
-@*@model BudgetingSquad.Models.GeoCode
-@{
-    ViewBag.Title = "Map";
-}*@
 
 <h2>Map</h2>
 <style>
@@ -19,24 +15,24 @@
     <script>
         var map;
         function initMap() {
-            //var coords = {lat: 43.034271, lng:-87.911919}
-            //var location = { lat: @*@Html.DisplayFor(model => model.Latitude), lng: @Html.DisplayFor(model => model.Address.Longitude) };*@
-            
+            var location = { lat:@Html.DisplayFor(model=>model.MadeActivites.Latitude), lng:@Html.DisplayFor(model=>model.MadeActivites.Longitude)};
             map = new google.maps.Map(document.getElementById('map'), {
-                center: marker,
+                center: { lat: 43.0450, lng: -87.9168 },
                 zoom: 8
             });
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map
+            })
+            //now add markers
+            //addMarker({lat:43.0228854,lng:-87.906498});
+            //function addMarker(coords){
+            //    var marker = new google.maps.Marker({
+            //    position: coords,
+            //    map: map
+            //})
+            //}
             
-            function addMarker(coords) {
-
-                var marker = new google.maps.Marker({
-                    position: coords,
-                    map: map
-                })
-               
-            }
-            addMarker(coords);
-            //addMarker({ lat: 43.0450, lng: -87.9168 });
         }
         
     </script>

@@ -24,27 +24,44 @@ namespace BudgetSquad.Controllers
         // GET: MadeActivites
         public ActionResult Index()
         {
+            return View(db.MadeActivites.ToList());
+
+            ////this finds the PlannerId on the MadeActivities table
+            //var madeActivitiesId = db.MadeActivites.Select(x => x.PlannerId).FirstOrDefault();
+            ////this finds the PlannerId on the CreateEvents table
+            //var createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
+            ////this matches all activities in the MadeActivities db where the PlannerId matches the event/activity put to a list
+            //var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
+            //var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
+            //var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
+            //ViewBag.BudgetTitle = "The Events Max Budget";
+            //ViewBag.MinBudgetTitle = "The Events Min Budget";
+            //ViewBag.Budget = budgetShown;
+            //ViewBag.minBudget = minBudget;
+            //return View(matchingEventToActivity);
+
+
             //var madeActivites = db.MadeActivites.Where(m => m.EventsName != null).ToList();
-            
-            var madeActivitiesId = db.MadeActivites.Select(x => x.MadeActivitesId).FirstOrDefault();
 
-            var createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
+            ////var madeActivitiesId = db.MadeActivites.Select(x => x.MadeActivitesId).FirstOrDefault();
 
-            var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
+            ////var createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
 
-            var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
-            var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
-            ViewBag.BudgetTitle = "The Events Max Budget";
-            ViewBag.MinBudgetTitle = "The Events Min Budget";
-            ViewBag.Budget = budgetShown;
-            ViewBag.minBudget = minBudget;
+            ////var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
 
-            //ViewBag.Budget = createEvent.TheMaxBudgetOfEvent;
-            return View(matchingEventToActivity);
+            ////var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
+            ////var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
+            ////ViewBag.BudgetTitle = "The Events Max Budget";
+            ////ViewBag.MinBudgetTitle = "The Events Min Budget";
+            ////ViewBag.Budget = budgetShown;
+            ////ViewBag.minBudget = minBudget;
 
-            
-        // do another query on CreateEvents table to find event that matches with activity
-      
+            //////ViewBag.Budget = createEvent.TheMaxBudgetOfEvent;
+            ////return View(matchingEventToActivity);
+
+
+            // do another query on CreateEvents table to find event that matches with activity
+
         }
 
         // GET: MadeActivites/Details/5
@@ -110,15 +127,15 @@ namespace BudgetSquad.Controllers
             return geocodeInfo;
         }
         
-        public ActionResult Map(int? id)
-        {
-            var currentUser = db.MadeActivites.Where(c => c.PlannerId == id).FirstOrDefault();
-            var lat = currentUser.Latitude;
-            var lng = currentUser.Longitude;
-            var results = lat + lng;
+        //public ActionResult Map(int? id)
+        //{
+        //    var currentUser = db.MadeActivites.Where(c => c.PlannerId == id).FirstOrDefault();
+        //    var lat = currentUser.Latitude;
+        //    var lng = currentUser.Longitude;
+        //    var results = lat + lng;
             
-            return View();
-        }
+        //    return View();
+        //}
         public string ConvertAddressToGoogleFormat(MadeActivites madeActivites)
         {
             string googleFormatAddress = AddPluses(madeActivites.StreetAddress) + "," + AddPluses(madeActivites.City) + "," + AddPluses(madeActivites.StateAbbreviation) + "," + AddPluses(madeActivites.ZipCode) + "," + AddPluses(madeActivites.Country);
