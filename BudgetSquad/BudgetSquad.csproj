@@ -196,6 +196,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="EventBrite.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,10 +212,15 @@
     <Compile Include="Migrations\201911011855452_update12312312.Designer.cs">
       <DependentUpon>201911011855452_update12312312.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911081922084_eventbriteClass.cs" />
+    <Compile Include="Migrations\201911081922084_eventbriteClass.Designer.cs">
+      <DependentUpon>201911081922084_eventbriteClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivitesInfo.cs" />
     <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\EventBrite.cs" />
     <Compile Include="Models\CreateEvent.cs" />
     <Compile Include="Controllers\CreateEventsController.cs" />
     <Compile Include="Models\BarGraphData.cs" />
@@ -337,7 +343,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -364,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911011855452_update12312312.resx">
       <DependentUpon>201911011855452_update12312312.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081922084_eventbriteClass.resx">
+      <DependentUpon>201911081922084_eventbriteClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

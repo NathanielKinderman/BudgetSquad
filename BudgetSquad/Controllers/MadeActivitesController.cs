@@ -7,13 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using System.Net.Mail;
-using System.Net;
-using System.Net.Mail;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
 using SmtpClient = System.Net.Mail.SmtpClient;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace BudgetSquad.Controllers
 {
@@ -25,7 +24,7 @@ namespace BudgetSquad.Controllers
         public ActionResult Index()
         {
             var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
-            var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();           
+            var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
             ViewBag.BudgetTitle = "The Events Max Budget";
             ViewBag.MinBudgetTitle = "The Events Min Budget";
             ViewBag.Budget = budgetShown;
@@ -84,7 +83,7 @@ namespace BudgetSquad.Controllers
             }
             return View(madeActivites);
         }
-        
+
 
         // GET: MadeActivites/Create
         public ActionResult Create()
@@ -127,7 +126,7 @@ namespace BudgetSquad.Controllers
         public GeoCode GeoLocate(string address)
         {
             var apiKey = Keys.APIKey;
-            var requestUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey;
+            var requestUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey;
             var result = new WebClient().DownloadString(requestUrl);
             GeoCode geocodeInfo = JsonConvert.DeserializeObject<GeoCode>(result);
             return geocodeInfo;
@@ -166,7 +165,7 @@ namespace BudgetSquad.Controllers
         //}
         public ActionResult AddingCost(MadeActivites madeActivites)
         {
-            
+
 
             var madeActivitesMaxCost = db.MadeActivites.Select(a => a.EstimatedCostOfActivity).FirstOrDefault();
             var madeActivitesMinCost = db.MadeActivites.Select(m => m.EstimatedMinimumCostOfActivity).FirstOrDefault();
@@ -199,7 +198,24 @@ namespace BudgetSquad.Controllers
         {
             
             return View();
-        }               
+        }
+
+        //public void EventBriteApi()
+        //{
+        //    string url = $"https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venue";
+        //    HttpClient client = new HttpClient();
+        //    HttpResponseMessage response = await client.GetAsync(url);
+        //    string jsonResult = await response.Content.ReadAsStringAsync();
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        EventBrite event = JsonConvert.DeserializeObject<EventBrite>(JsonResult);
+        //    }
+        //}
+
+
+
+
+
 
 
 

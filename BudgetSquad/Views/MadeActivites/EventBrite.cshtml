@@ -1,22 +1,29 @@
 ﻿<table id="MyTable">
+    <tr>
+        <td></td>
+    </tr>
 </table>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
     GetEvents();
-  function GetEvents() {
-
+    function GetEvents() {
+        var text = '{"name": "", "description": "", "url": "" }'
+        var obj = text.name;
+        
         $.ajax({
             url: 'https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venuehttps://eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km',
             dataType: 'json',
             type: 'get',
 
             success: function (data) {
-                document.getElementById("MyTable").innerHTML = "";
-                document.getElementById("MyTable").innerHTML = "";
+                
+                document.getElementById("MyTable").innerHTML.valueOf = obj;
+                document.getElementById("MyTable").innerHTML.valueOf = "";
                 console.log(data);
-                let events = data.event;
+                alert(obj.events);
+                let events = obj.events;
                 for (let el in events) {
                     $("#MyTable").append(
                         `<tr>
