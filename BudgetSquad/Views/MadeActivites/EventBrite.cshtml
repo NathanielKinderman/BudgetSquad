@@ -8,9 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
     GetEvents();
-    function GetEvents() {
-        var text = '{"name": "", "description": "", "url": "" }'
-        var obj = text.name;
+    function GetEvents() {        
         
         $.ajax({
             url: 'https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venuehttps://eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km',
@@ -19,11 +17,11 @@
 
             success: function (data) {
                 
-                document.getElementById("MyTable").innerHTML.valueOf = obj;
+                document.getElementById("MyTable").innerHTML.valueOf = "";
                 document.getElementById("MyTable").innerHTML.valueOf = "";
                 console.log(data);
-                alert(obj.events);
-                let events = obj.events;
+                
+                let events = data.event;
                 for (let el in events) {
                     $("#MyTable").append(
                         `<tr>
