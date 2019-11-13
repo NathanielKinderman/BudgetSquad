@@ -13,6 +13,7 @@ using MimeKit;
 using SmtpClient = System.Net.Mail.SmtpClient;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace BudgetSquad.Controllers
 {
@@ -31,41 +32,8 @@ namespace BudgetSquad.Controllers
             ViewBag.minBudget = minBudget;
             return View(db.MadeActivites.ToList());
 
-            ////this finds the PlannerId on the MadeActivities table
-            //var madeActivitiesId = db.MadeActivites.Select(x => x.PlannerId).FirstOrDefault();
-            ////this finds the PlannerId on the CreateEvents table
-            //var createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
-            ////this matches all activities in the MadeActivities db where the PlannerId matches the event/activity put to a list
-            //var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
-            //var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
-            //var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
-            //ViewBag.BudgetTitle = "The Events Max Budget";
-            //ViewBag.MinBudgetTitle = "The Events Min Budget";
-            //ViewBag.Budget = budgetShown;
-            //ViewBag.minBudget = minBudget;
-            //return View(matchingEventToActivity);
 
 
-            //var madeActivites = db.MadeActivites.Where(m => m.EventsName != null).ToList();
-
-            ////var madeActivitiesId = db.MadeActivites.Select(x => x.MadeActivitesId).FirstOrDefault();
-
-            ////var createEventId = db.CreateEvents.Select(x => x.PlannerId).FirstOrDefault();
-
-            ////var matchingEventToActivity = db.MadeActivites.Where(x => madeActivitiesId == createEventId).ToList();
-
-            ////var budgetShown = db.CreateEvents.Select(c => c.TheMaxBudgetOfEvent).FirstOrDefault();
-            ////var minBudget = db.CreateEvents.Select(m => m.TheMinBudgetOfEvent).FirstOrDefault();
-            ////ViewBag.BudgetTitle = "The Events Max Budget";
-            ////ViewBag.MinBudgetTitle = "The Events Min Budget";
-            ////ViewBag.Budget = budgetShown;
-            ////ViewBag.minBudget = minBudget;
-
-            //////ViewBag.Budget = createEvent.TheMaxBudgetOfEvent;
-            ////return View(matchingEventToActivity);
-
-
-            // do another query on CreateEvents table to find event that matches with activity
 
         }
 
@@ -156,13 +124,6 @@ namespace BudgetSquad.Controllers
             return str;
         }
 
-
-        //public ActionResult Map()
-        //{
-
-        //    return View();
-
-        //}
         public ActionResult AddingCost(MadeActivites madeActivites)
         {
 
@@ -194,126 +155,132 @@ namespace BudgetSquad.Controllers
 
         }
 
-        public ActionResult EventBrite()
-        {
-            
-            return View();
-        }
-
-        //public void EventBriteApi()
+        //public ActionResult EventBrite()
         //{
-        //    string url = $"https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venue";
-        //    HttpClient client = new HttpClient();
-        //    HttpResponseMessage response = await client.GetAsync(url);
-        //    string jsonResult = await response.Content.ReadAsStringAsync();
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        EventBrite event = JsonConvert.DeserializeObject<EventBrite>(JsonResult);
-        //    }
+
+        //    return View();
         //}
 
-
-
-
-
-
-
-
-        // GET: MadeActivites/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task EventBriteApi()
         {
-            if (id == null)
+            
+            string url = $"https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venue";
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+            string jsonResult = await response.Content.ReadAsStringAsync();
+            
+            if (response.IsSuccessStatusCode)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MadeActivites madeActivites = db.MadeActivites.Find(id);
-            if (madeActivites == null)
-            {
-                return HttpNotFound();
-            }
-            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
-            return View(madeActivites);
-        }
-
-        // POST: MadeActivites/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(MadeActivites madeActivites)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(madeActivites).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
-            return View(madeActivites);
-        }
-
-        // GET: MadeActivites/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MadeActivites madeActivites = db.MadeActivites.Find(id);
-            if (madeActivites == null)
-            {
-                return HttpNotFound();
-            }
-            return View(madeActivites);
-        }
-
-        // POST: MadeActivites/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            MadeActivites madeActivites = db.MadeActivites.Find(id);
-            db.MadeActivites.Remove(madeActivites);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+                EventBrite eventBrite = JsonConvert.DeserializeObject<EventBrite>(jsonResult);
+                 
+                
                
-
-        public ActionResult SendEmail()
-        {
-            MailAddress fromAddress = new MailAddress("budgetsquadtestplanner@gmail.com", "Nate");
-            MailAddress toAddress = new MailAddress("budgetsquadtestpartymember@gmail.com", "Bob");
-            string myPassword = "Budget_1";
-            string subject = "You Are Invited";
-            string body = "You are invited to an Event from BudgetSquad. Please go to Bugdet Squad page and look the Event.";
-            SmtpClient smtpServer = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, myPassword)
-            };
-            using (MailMessage message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            })
-            {
-                smtpServer.Send(message);
             }
-            return View();
-     
+            
         }
+
+
+
+
+
+
+
+
+// GET: MadeActivites/Edit/5
+public ActionResult Edit(int? id)
+{
+    if (id == null)
+    {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+    }
+    MadeActivites madeActivites = db.MadeActivites.Find(id);
+    if (madeActivites == null)
+    {
+        return HttpNotFound();
+    }
+    //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
+    return View(madeActivites);
+}
+
+// POST: MadeActivites/Edit/5
+// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+[HttpPost]
+[ValidateAntiForgeryToken]
+public ActionResult Edit(MadeActivites madeActivites)
+{
+    if (ModelState.IsValid)
+    {
+        db.Entry(madeActivites).State = EntityState.Modified;
+        db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    //ViewBag.EventId = new SelectList(db.CreateEvents, "Id", "EventsName", madeActivites.EventId);
+    return View(madeActivites);
+}
+
+// GET: MadeActivites/Delete/5
+public ActionResult Delete(int? id)
+{
+    if (id == null)
+    {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+    }
+    MadeActivites madeActivites = db.MadeActivites.Find(id);
+    if (madeActivites == null)
+    {
+        return HttpNotFound();
+    }
+    return View(madeActivites);
+}
+
+// POST: MadeActivites/Delete/5
+[HttpPost, ActionName("Delete")]
+[ValidateAntiForgeryToken]
+public ActionResult DeleteConfirmed(int id)
+{
+    MadeActivites madeActivites = db.MadeActivites.Find(id);
+    db.MadeActivites.Remove(madeActivites);
+    db.SaveChanges();
+    return RedirectToAction("Index");
+}
+
+protected override void Dispose(bool disposing)
+{
+    if (disposing)
+    {
+        db.Dispose();
+    }
+    base.Dispose(disposing);
+}
+
+
+public ActionResult SendEmail()
+{
+    MailAddress fromAddress = new MailAddress("budgetsquadtestplanner@gmail.com", "Nate");
+    MailAddress toAddress = new MailAddress("budgetsquadtestpartymember@gmail.com", "Bob");
+    string myPassword = "Budget_1";
+    string subject = "You Are Invited";
+    string body = "You are invited to an Event from BudgetSquad. Please go to Bugdet Squad page and look the Event.";
+    SmtpClient smtpServer = new SmtpClient
+    {
+        Host = "smtp.gmail.com",
+        Port = 587,
+        EnableSsl = true,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        UseDefaultCredentials = false,
+        Credentials = new NetworkCredential(fromAddress.Address, myPassword)
+    };
+    using (MailMessage message = new MailMessage(fromAddress, toAddress)
+    {
+        Subject = subject,
+        Body = body
+    })
+    {
+        smtpServer.Send(message);
+    }
+    return View();
+
+}
     }
 }

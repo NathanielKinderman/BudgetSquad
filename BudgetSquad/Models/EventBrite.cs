@@ -5,8 +5,42 @@ using System.Web;
 
 namespace BudgetSquad.Models
 {
-    
-        public class EventBrite
+    public class EventBrite
+    {
+
+        public class LocalEvents
+        {
+            public Pagination pagination { get; set; }
+            public Event[] events { get; set; }
+            public Location location { get; set; }
+        }
+
+        public class Pagination
+        {
+            public int object_count { get; set; }
+            public int page_number { get; set; }
+            public int page_size { get; set; }
+            public int page_count { get; set; }
+            public bool has_more_items { get; set; }
+        }
+
+        public class Location
+        {
+            public string latitude { get; set; }
+            public Augmented_Location augmented_location { get; set; }
+            public string within { get; set; }
+            public string longitude { get; set; }
+            public string address { get; set; }
+        }
+
+        public class Augmented_Location
+        {
+            public string city { get; set; }
+            public string region { get; set; }
+            public string country { get; set; }
+        }
+
+        public class Event
         {
             public Name name { get; set; }
             public Description description { get; set; }
@@ -41,17 +75,19 @@ namespace BudgetSquad.Models
             public string source { get; set; }
             public bool is_free { get; set; }
             public string version { get; set; }
-            public object summary { get; set; }
-            public object logo_id { get; set; }
+            public string summary { get; set; }
+            public string logo_id { get; set; }
             public string organizer_id { get; set; }
             public string venue_id { get; set; }
             public string category_id { get; set; }
-            public object subcategory_id { get; set; }
-            public object format_id { get; set; }
+            public string subcategory_id { get; set; }
+            public string format_id { get; set; }
             public string resource_uri { get; set; }
             public bool is_externally_ticketed { get; set; }
-            public object logo { get; set; }
+            public Logo logo { get; set; }
             public Venue venue { get; set; }
+            public string series_id { get; set; }
+            public string vanity_url { get; set; }
         }
 
         public class Name
@@ -62,8 +98,8 @@ namespace BudgetSquad.Models
 
         public class Description
         {
-            public object text { get; set; }
-            public object html { get; set; }
+            public string text { get; set; }
+            public string html { get; set; }
         }
 
         public class Start
@@ -80,13 +116,44 @@ namespace BudgetSquad.Models
             public DateTime utc { get; set; }
         }
 
+        public class Logo
+        {
+            public Crop_Mask crop_mask { get; set; }
+            public Original original { get; set; }
+            public string id { get; set; }
+            public string url { get; set; }
+            public string aspect_ratio { get; set; }
+            public string edge_color { get; set; }
+            public bool edge_color_set { get; set; }
+        }
+
+        public class Crop_Mask
+        {
+            public Top_Left top_left { get; set; }
+            public int width { get; set; }
+            public int height { get; set; }
+        }
+
+        public class Top_Left
+        {
+            public int x { get; set; }
+            public int y { get; set; }
+        }
+
+        public class Original
+        {
+            public string url { get; set; }
+            public int? width { get; set; }
+            public int? height { get; set; }
+        }
+
         public class Venue
         {
             public Address address { get; set; }
             public string resource_uri { get; set; }
             public string id { get; set; }
-            public object age_restriction { get; set; }
-            public object capacity { get; set; }
+            public string age_restriction { get; set; }
+            public int? capacity { get; set; }
             public string name { get; set; }
             public string latitude { get; set; }
             public string longitude { get; set; }
@@ -94,7 +161,7 @@ namespace BudgetSquad.Models
 
         public class Address
         {
-            public object address_1 { get; set; }
+            public string address_1 { get; set; }
             public string address_2 { get; set; }
             public string city { get; set; }
             public string region { get; set; }
@@ -107,5 +174,5 @@ namespace BudgetSquad.Models
             public string[] localized_multi_line_address_display { get; set; }
         }
 
-    
+    }
 }

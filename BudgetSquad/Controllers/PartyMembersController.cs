@@ -115,7 +115,14 @@ namespace BudgetSquad.Controllers
             
         }
 
+        //public ActionResult ViewAllActivities()
+        //{
+        //    var activitiesList = db.MadeActivites.
+        //    ViewBag.List = activitiesList;
+        //    return View(activitiesList);
 
+
+        //}
 
 
         // GET: PartyMembers/Edit/5

@@ -196,7 +196,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
-    <Compile Include="EventBrite.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -340,6 +339,7 @@
     <Content Include="Views\BarGraph\LeisureBreakDown.cshtml" />
     <Content Include="Views\BarGraph\AddingCost.cshtml" />
     <Content Include="Views\MadeActivites\EventBrite.cshtml" />
+    <Content Include="Views\PartyMembers\ViewAllActivities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,37 +1,45 @@
-﻿<table id="MyTable">
-    <tr>
-        <td></td>
-    </tr>
-</table>
+﻿ <html>
+<body>
+
+    <table id="my-table" border="1" width="100%">
+        <tr>
+            <th style="text-align:center">Event Name</th>
+            <th style="text-align:center">Description</th>
+            <th style="text-align:center">URL Link</th>
+        </tr>
+    </table>
+
+
+</body>
+
+
+</html>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
     GetEvents();
     function GetEvents() {        
-        
+        var data = {
+            name : "",
+            description : "",
+            url : "",
+
+
+        }
         $.ajax({
             url: 'https://www.eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km&expand=venuehttps://eventbriteapi.com/v3/events/search/?token=BJQ5NU5V6KLU3BZ7R32V&location.address=milwaukee&location.within=10km',
             dataType: 'json',
             type: 'get',
+            data: JSON.stringify(data),
+            
 
-            success: function (data) {
+            success: function (data) {                
                 
-                document.getElementById("MyTable").innerHTML.valueOf = "";
-                document.getElementById("MyTable").innerHTML.valueOf = "";
-                console.log(data);
-                
-                let events = data.event;
-                for (let el in events) {
-                    $("#MyTable").append(
-                        `<tr>
-                            <td> ${events[el].name.text} </td>
-                            <td> ${events[el].description.text} </td>
-                            <td> ${events[el].url.text} </td>
-                            <td><a href = ${data[el].Url}> ${data[el].Url}</a></td>
-
-                        </tr>`)
-                }
+                    $("#my-table").append(
+                        "<tr><td>" + data["name.text"] + "</td>" + "<td>" +
+                        data["description.text"] + "</td>" + "<td>" +
+                        data["url"] +"</td>"+"</tr>")              
 
 
             },

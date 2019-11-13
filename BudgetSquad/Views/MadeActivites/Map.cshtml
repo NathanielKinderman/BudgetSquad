@@ -23,13 +23,15 @@
                 center: location,
                 zoom: 8
             });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map
-            });
-            console.log('marker', marker);
+            foreach(i in location){
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+                console.log('marker', marker);
               @for (int i = 0; i < ViewBag.Lat.Count; i++) {
                 Html.Raw("addMarker("+ ViewBag.Lat[i] +", "+ViewBag.Lng[i]+");");
+            }
             }
             //now add markers
             //addMarker({lat:43.0228854,lng:-87.906498});

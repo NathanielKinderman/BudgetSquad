@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ViewAllActivities";
+    Layout = "~/Views/Shared/_PartyMemberLayout.cshtml";
+}
+
+<h2>View All Activities</h2>
+<div>
+    <h4>All Activities</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @ViewBag.List
+            </th>
+            
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @ViewBag.List
+                </td>
+                
+
+            </tr>
+        }
+    </table>
+</div>
